@@ -1,3 +1,5 @@
 const WebpackBar = require('webpackbar');
 
-module.exports = new WebpackBar()
+module.exports = function() {
+  return new WebpackBar()
+}

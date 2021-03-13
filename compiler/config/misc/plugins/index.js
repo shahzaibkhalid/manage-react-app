@@ -1,7 +1,11 @@
 const webpackbar = require('./webpackbar');
+const providePlugin = require('./providePlugin')
 
 const miscWebpackPlugins = () => {
-  return [webpackbar]
+  return [
+    providePlugin(),
+    webpackbar()
+  ]
 }
 
 module.exports = miscWebpackPlugins;

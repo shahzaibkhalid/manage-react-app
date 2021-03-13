@@ -6,15 +6,17 @@ const {
   resolvePath
 } = require('../../../../utils')
 
-module.exports = new HTMLWebpackPlugin({
-  /**
-   * @template
-   * This option takes an existing HTML file
-   * (in our case, the one in the project) and
-   * injects scripts
-   */
-  template: resolvePath(
-    FOLDER_NAMES.src,
-    FILE_NAMES.indexHTML
-  )
-});
+module.exports = function() {
+  return new HTMLWebpackPlugin({
+    /**
+     * @template
+     * This option takes an existing HTML file
+     * (in our case, the one in the project) and
+     * injects scripts
+     */
+    template: resolvePath(
+      FOLDER_NAMES.src,
+      FILE_NAMES.indexHTML
+    )
+  });
+}

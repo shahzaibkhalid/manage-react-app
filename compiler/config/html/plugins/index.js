@@ -1,7 +1,9 @@
 const htmlWebpackPlugin = require('./html-webpack-plugin')
 
 const htmlWebpackPlugins = () => {
-  return [htmlWebpackPlugin]
+  return [
+    htmlWebpackPlugin()
+  ]
 }
 
 module.exports = htmlWebpackPlugins;

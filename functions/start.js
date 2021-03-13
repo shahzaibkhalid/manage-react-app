@@ -4,6 +4,7 @@ const { ENV, FOLDER_NAMES, PROJECT_CONFIG_FILES, resolvePath } = require('../com
 
 function start(env) {
   process.env.NODE_ENV = ENV.dev;
+  process.env.__MRA_PROJECT_ENV__ = env;
   try {
     const baseProjectSpecificConfig = require(
       resolvePath(
