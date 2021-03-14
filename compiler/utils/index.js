@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs')
 const devCoreConfig = require('../config/devCoreConfig')
 const prodCoreConfig = require('../config/prodCoreConfig')
 
@@ -59,6 +60,28 @@ function isDevelopment() {
   return process.env.NODE_ENV !== ENV.prod
 }
 
+function getFilesRecursivelyFromDirectory(directoryPath) {
+  let fileList = []
+
+  function _readDir(dirPath) {
+    let files = fs.readdirSync(dirPath)
+    // filter to remove dot files
+    files = files.filter(item => !(/(^|\/)\.[^\/\.]/g).test(item));
+    files.forEach(file => {
+      const absolutePath = path.resolve(dirPath, file)
+      if (fs.statSync(absolutePath).isFile()) {
+        // TODO: filter to have only code related files
+        fileList.push(absolutePath)
+      } else if (fs.statSync(absolutePath).isDirectory()) {
+        _readDir(absolutePath)
+      }
+    })
+  }
+
+  _readDir(directoryPath)
+  return fileList
+}
+
 module.exports = {
   ENV,
   FILE_NAMES,
@@ -68,4 +91,5 @@ module.exports = {
   resolvePath,
   getEnvBasedCoreConfig,
   isDevelopment,
+  getFilesRecursivelyFromDirectory
 }

@@ -13,6 +13,7 @@
     "directory-named-webpack-plugin": "^4.0.1",
     "express": "^4.17.1",
     "html-webpack-plugin": "^5.2.0",
+    "prettier": "^2.2.1",
     "react-refresh": "^0.9.0",
     "webpack": "^5.24.0",
     "webpack-dev-server": "^3.11.2",

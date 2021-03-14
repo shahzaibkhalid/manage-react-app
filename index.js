@@ -5,6 +5,7 @@ const start = require('./functions/start')
 const build = require('./functions/build')
 const serve = require('./functions/serve')
 const analyze = require('./functions/analyze')
+const prettier = require('./functions/prettier')
 
 program
   .command('start <env>')
@@ -28,5 +29,11 @@ program
   .alias('a')
   .description('Analyze the bundle')
   .action(analyze);
+
+program
+  .command('prettier')
+  .alias('p')
+  .description('Prettify the source code')
+  .action(prettier);
 
 program.parse(process.argv);
