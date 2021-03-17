@@ -9,13 +9,20 @@ function prettier() {
   files.forEach(file => {
     fs.readFile(file, 'utf-8', (err, data) => {
       if (err) console.error(err)
-      /**
-       * TODO: write a separate function to handle parser type by reading the
-       * TODO: file extension, or may be see if we can use `filePath` option here
-       */
-      fs.writeFile(file, _prettier.format(data, {trailingComma: 'all', jsxSingleQuote: true, jsxBracketSameLine: false, parser: file.includes('.html') ? 'html' : 'babel'}), (err) => {
-        if (err) console.error(err)
-      })
+      fs.writeFile(
+        file,
+        _prettier.format(
+          data,
+          // TODO: merge the configs here
+          {
+            trailingComma: 'all',
+            jsxSingleQuote: true,
+            jsxBracketSameLine: false,
+            filepath: file,
+          }
+        ),
+        (err) => { if (err) console.error(err) }
+      )
     })
   })
 }
