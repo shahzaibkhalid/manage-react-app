@@ -32,6 +32,8 @@ function prettier() {
           }
         ),
         (err) => { if (err) console.error(err) }
+        //TODO:  add some sort of log to consoles to point out which file is being formatted
+        // TODO: also log the closing message that all files are formatted
       )
     })
   })
