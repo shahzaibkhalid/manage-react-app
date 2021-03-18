@@ -9,6 +9,8 @@ function prettier() {
   files.forEach(file => {
     fs.readFile(file, 'utf-8', (err, data) => {
       if (err) console.error(err)
+      //TODO: befor formatting, we should check whether a file is already formatted
+      // TODO: may be through editor autoformatting (using prettier.check)
       fs.writeFile(
         file,
         _prettier.format(

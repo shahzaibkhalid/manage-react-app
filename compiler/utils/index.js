@@ -1,3 +1,4 @@
+// TODO: as this file contains common miscs, move this folder to the root
 const path = require('path');
 const fs = require('fs')
 const devCoreConfig = require('../config/devCoreConfig')
