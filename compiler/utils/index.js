@@ -13,7 +13,8 @@ const FILE_NAMES = {
   indexJS: 'index.js',
   indexHTML: 'index.html',
   statsJSON: 'stats.json',
-  reportHTML: 'report.html'
+  reportHTML: 'report.html',
+  prettierConfig: 'prettier.config.js'
 }
 
 const FOLDER_NAMES = {
@@ -27,7 +28,8 @@ const FOLDER_NAMES = {
   pages: 'pages',
   utils: 'utils',
   report: 'report',
-  maps: 'maps'
+  maps: 'maps',
+  codeQuality: 'code-quality'
 }
 
 const PROJECT_CONFIG_FILES = {
