@@ -9,14 +9,14 @@ function start(env) {
     const baseProjectSpecificConfig = require(
       resolvePath(
         FOLDER_NAMES.config,
-        FOLDER_NAMES.shaizei,
+        FOLDER_NAMES.envs,
         PROJECT_CONFIG_FILES.BASE
       )
     );
     const envProjectSpecificConfig = require(
       resolvePath(
         FOLDER_NAMES.config,
-        FOLDER_NAMES.shaizei,
+        FOLDER_NAMES.envs,
         env
       )
     );

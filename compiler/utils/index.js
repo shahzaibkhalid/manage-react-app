@@ -19,7 +19,7 @@ const FILE_NAMES = {
 
 const FOLDER_NAMES = {
   config: 'config',
-  shaizei: 'shaizei',
+  envs: 'envs',
   src: 'src',
   dist: 'dist',
   components: 'components',

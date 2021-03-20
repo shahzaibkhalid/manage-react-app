@@ -11,7 +11,7 @@ module.exports = function() {
   return new ProvidePlugin({
     __MRA_PROJECT_ENV__: resolvePath(
       FOLDER_NAMES.config,
-      FOLDER_NAMES.shaizei,
+      FOLDER_NAMES.envs,
       process.env.__MRA_PROJECT_ENV__
     )
   })
