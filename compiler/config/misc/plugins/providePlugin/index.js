@@ -1,5 +1,5 @@
 const { ProvidePlugin } = require('webpack')
-const { resolvePath, FOLDER_NAMES } = require('../../../../utils')
+const { resolvePath, FOLDER_NAMES } = require('../../../../../utils')
 
 module.exports = function() {
   /**

@@ -1,6 +1,6 @@
 // this function merges envrionment specific configs along with any overrides from the project etc.
 const webpackMerge = require('webpack-merge');
-const { getEnvBasedCoreConfig } = require('../utils')
+const { getEnvBasedCoreConfig } = require('../../utils')
 const commonCoreConfig = require('../config/commonCoreConfig')
 
 

@@ -4,7 +4,7 @@ const {
   FOLDER_NAMES,
   FILE_NAMES,
   resolvePath
-} = require('../../../../utils')
+} = require('../../../../../utils')
 
 module.exports = function() {
   return new HTMLWebpackPlugin({

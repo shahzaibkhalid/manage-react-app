@@ -1,6 +1,6 @@
 const fs = require('fs')
 const _prettier = require('prettier')
-const { resolvePath, getFilesRecursivelyFromDirectory, FOLDER_NAMES, FILE_NAMES } = require('../compiler/utils')
+const { resolvePath, getFilesRecursivelyFromDirectory, FOLDER_NAMES, FILE_NAMES } = require('../utils')
 
 function prettier() {
   const files = getFilesRecursivelyFromDirectory(

@@ -1,8 +1,8 @@
 // TODO: as this file contains common miscs, move this folder to the root
 const path = require('path');
 const fs = require('fs')
-const devCoreConfig = require('../config/devCoreConfig')
-const prodCoreConfig = require('../config/prodCoreConfig')
+const devCoreConfig = require('../compiler/config/devCoreConfig')
+const prodCoreConfig = require('../compiler/config/prodCoreConfig')
 
 const ENV = {
   dev: 'development',

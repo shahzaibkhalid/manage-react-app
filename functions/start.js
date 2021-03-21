@@ -1,6 +1,6 @@
 const util = require('util') // TODO: remove it
 const compiler = require('../compiler');
-const { ENV, FOLDER_NAMES, PROJECT_CONFIG_FILES, resolvePath } = require('../compiler/utils');
+const { ENV, FOLDER_NAMES, PROJECT_CONFIG_FILES, resolvePath } = require('../utils');
 
 function start(env) {
   process.env.NODE_ENV = ENV.dev;

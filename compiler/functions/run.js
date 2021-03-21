@@ -1,6 +1,6 @@
 const Webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const { PROJECT_VARS } = require('../utils');
+const { PROJECT_VARS } = require('../../utils');
 
 function run(config) {
   const compiler = Webpack(config);

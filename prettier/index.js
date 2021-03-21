@@ -1,5 +1,4 @@
 function getBasePrettierConfig() {
-  // TODO: document these properties
   return {
     // prefer single quotes over double
     singleQuote: true,

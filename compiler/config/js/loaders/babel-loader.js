@@ -1,4 +1,4 @@
-const { isDevelopment } = require('../../../utils')
+const { isDevelopment } = require('../../../../utils')
 
 function babelLoader() {
   return {

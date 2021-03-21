@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const fs = require('fs');
-const { resolvePath, FOLDER_NAMES, FILE_NAMES } = require('../utils');
+const { resolvePath, FOLDER_NAMES, FILE_NAMES } = require('../../utils');
 
 function build(config) {
   // develop the logic of bundling the code

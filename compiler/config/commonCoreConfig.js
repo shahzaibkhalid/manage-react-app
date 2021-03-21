@@ -6,7 +6,7 @@ const {
   FOLDER_NAMES,
   FILE_NAMES,
   resolvePath
-} = require('../utils');
+} = require('../../utils');
 
 module.exports = {
   webpack() {
