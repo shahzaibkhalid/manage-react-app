@@ -6,12 +6,14 @@ const build = require('./functions/build')
 const serve = require('./functions/serve')
 const analyze = require('./functions/analyze')
 const prettier = require('./functions/prettier')
+const eslint = require('./functions/eslint')
 
 program
   .command('start <env>')
   .alias('s')
   .description('Start the development server')
   .action(start);
+
 program
   .command('build <env>')
   .alias('b')
@@ -35,5 +37,11 @@ program
   .alias('p')
   .description('Prettify the source code')
   .action(prettier);
+
+program
+  .command('eslint')
+  .alias('e')
+  .description('Run ESLint on the source code')
+  .action(eslint);
 
 program.parse(process.argv);
