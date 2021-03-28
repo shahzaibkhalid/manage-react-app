@@ -1,5 +1,6 @@
 const baseESLintConfig = {
   //TODO: document all these options
+  // TODO: check and fix prettier rules if they conflict here
   env: {
     browser: true,
     es6: true
@@ -13,9 +14,14 @@ const baseESLintConfig = {
    * -> Order in which rules are applied: top to bottom
    */
   extends: [
-    // recommended rules given by ESLint
-    // 'eslint:recommended',
+    // Some recommended JavaScript rules by ESLint (given as default)
     'eslint:recommended',
+    // Some recommended React-specific rules written
+    // in `eslint-plugin-react`
+    'plugin:react/recommended',
+    // Some recommended React Hooks specific rules
+    // written in `eslint-plugin-react-hooks`
+    'plugin:react-hooks/recommended'
   ],
   /**
    * @plugins
@@ -25,7 +31,13 @@ const baseESLintConfig = {
    * -> Order in which rules are applied: top to bottom
    */
   plugins: [],
-  rules: {},
+  rules: {
+    /**
+     * After React 17, with new JSX transform, React doesn't need
+     * to be in scope anymore, so we can turn this rule off.
+     */
+    'react/react-in-jsx-scope': 'off'
+  },
   /**
    * @parserOptions
    * This object contains configuration options centering around
