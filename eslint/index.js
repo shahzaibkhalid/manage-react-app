@@ -21,7 +21,7 @@ const baseESLintConfig = {
     'plugin:react/recommended',
     // Some recommended React Hooks specific rules
     // written in `eslint-plugin-react-hooks`
-    'plugin:react-hooks/recommended'
+    'plugin:react-hooks/recommended',
   ],
   /**
    * @plugins
