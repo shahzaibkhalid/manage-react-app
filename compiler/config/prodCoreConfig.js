@@ -3,7 +3,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 module.exports = {
   webpack() {
-    const { PROJECT_VARS, FILE_NAMES, FOLDER_NAMES, resolvePath } = require('../utils')
+    const { PROJECT_VARS, FILE_NAMES, FOLDER_NAMES, resolvePath } = require('../../utils')
     const { PROTOCOL, SERVER_PORT, HOST } = PROJECT_VARS
 
     return {

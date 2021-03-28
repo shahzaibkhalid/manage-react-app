@@ -4,7 +4,7 @@ const {
   FOLDER_NAMES,
   FILE_NAMES,
   PROJECT_VARS
-} = require('../utils');
+} = require('../../utils');
 
 const { PROTOCOL, ANALYZER_SERVER_PORT, HOST } = PROJECT_VARS
 
