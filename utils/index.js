@@ -1,3 +1,4 @@
+// TODO: document what is the purpose of different functions
 const path = require('path');
 const fs = require('fs')
 const devCoreConfig = require('../compiler/config/devCoreConfig')
@@ -85,6 +86,30 @@ function getFilesRecursivelyFromDirectory(directoryPath) {
   return fileList
 }
 
+function getFinalWebpackConfig(env) {
+  const compiler = require('../compiler')
+  const baseProjectSpecificConfig = require(
+    resolvePath(
+      FOLDER_NAMES.config,
+      FOLDER_NAMES.envs,
+      PROJECT_CONFIG_FILES.BASE
+    )
+  );
+  const envProjectSpecificConfig = require(
+    resolvePath(
+      FOLDER_NAMES.config,
+      FOLDER_NAMES.envs,
+      env
+    )
+  );
+  const finalCompilerConfig = compiler.merge(
+    baseProjectSpecificConfig.webpack(),
+    envProjectSpecificConfig.webpack()
+  );
+
+  return finalCompilerConfig;
+}
+
 module.exports = {
   ENV,
   FILE_NAMES,
@@ -94,5 +119,6 @@ module.exports = {
   resolvePath,
   getEnvBasedCoreConfig,
   isDevelopment,
-  getFilesRecursivelyFromDirectory
+  getFilesRecursivelyFromDirectory,
+  getFinalWebpackConfig
 }
