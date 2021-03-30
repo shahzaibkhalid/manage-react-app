@@ -1,5 +1,5 @@
 const { ProvidePlugin } = require('webpack')
-const { resolvePath, FOLDER_NAMES } = require('../../../../../utils')
+const { resolvePath, FOLDER_NAMES, ENV } = require('../../../../../utils')
 
 module.exports = function() {
   /**
@@ -12,7 +12,7 @@ module.exports = function() {
     __MRA_PROJECT_ENV__: resolvePath(
       FOLDER_NAMES.config,
       FOLDER_NAMES.envs,
-      process.env.__MRA_PROJECT_ENV__
+      process.env.__MRA_PROJECT_ENV__ || ENV.dev
     )
   })
 }
