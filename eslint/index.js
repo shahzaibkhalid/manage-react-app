@@ -1,6 +1,5 @@
 const baseESLintConfig = {
   //TODO: document all these options
-  // TODO: check and fix prettier rules if they conflict here
   env: {
     browser: true,
     es6: true
@@ -22,6 +21,13 @@ const baseESLintConfig = {
     // Some recommended React Hooks specific rules
     // written in `eslint-plugin-react-hooks`
     'plugin:react-hooks/recommended',
+    // Some recommended rules around import/export
+    // written in `eslint-plugin-import`
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    // Some recommended a11y rules for JSX in React
+    // written in `eslint-plugin-jsx-a11y`
+    'plugin:jsx-a11y/recommended'
   ],
   /**
    * @plugins

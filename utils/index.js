@@ -1,4 +1,3 @@
-// TODO: as this file contains common miscs, move this folder to the root
 const path = require('path');
 const fs = require('fs')
 const devCoreConfig = require('../compiler/config/devCoreConfig')
@@ -14,7 +13,8 @@ const FILE_NAMES = {
   indexHTML: 'index.html',
   statsJSON: 'stats.json',
   reportHTML: 'report.html',
-  prettierConfig: 'prettier.config.js'
+  prettierConfig: 'prettier.config.js',
+  eslintConfig: '.eslintrc.js'
 }
 
 const FOLDER_NAMES = {
