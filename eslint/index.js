@@ -1,3 +1,5 @@
+const { getFinalWebpackConfig, ENV } = require('../utils')
+
 const baseESLintConfig = {
   //TODO: document all these options
   env: {
@@ -60,6 +62,25 @@ const baseESLintConfig = {
     // This enables JSX support (as it's not enabled by default)
     ecmaFeatures: {
       jsx: true,
+    }
+  },
+  // TODO: what is the purpose of settings?
+  settings: {
+    /**
+     * TODO: explain in detail the interplay of `eslint-import-resolver-webpack`
+     * and `eslint-plugin-import`
+     */
+    'import/resolver': {
+      webpack: {
+        // TODO: explain why adding DEV env here is a good approximation
+        // config: {
+        //   resolve: {
+        //     alias: getFinalWebpackConfig(ENV.dev).alias,
+        //     extensions: getFinalWebpackConfig(ENV.dev).extensions
+        //   }
+        // },
+        config: getFinalWebpackConfig(ENV.dev)
+      }
     }
   }
 }
