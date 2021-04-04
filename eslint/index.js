@@ -29,7 +29,10 @@ const baseESLintConfig = {
     'plugin:import/warnings',
     // Some recommended a11y rules for JSX in React
     // written in `eslint-plugin-jsx-a11y`
-    'plugin:jsx-a11y/recommended'
+    'plugin:jsx-a11y/recommended',
+    // Some recommended rules to lint RegEx
+    // written in `eslint-plugin-clean-regex`
+    'plugin:clean-regex/recommended'
   ],
   /**
    * @plugins
