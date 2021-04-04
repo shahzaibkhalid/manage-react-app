@@ -1,9 +1,50 @@
-const _eslint = require('eslint')
+const { ESLint } = require('eslint')
+const { resolvePath, FOLDER_NAMES, FILE_NAMES } = require('../utils')
 
-function eslint() {
-  //TODO: read the project config file and resolve here to proceed
-  //TODO: set the same project config file path for the extension in .vscode/settings.json
-  // TODO: work on linting the files
+async function eslint() {
+  try {
+    const finalConfig = require(
+      resolvePath(
+        FOLDER_NAMES.config,
+        FOLDER_NAMES.codeQuality,
+        FILE_NAMES.eslintConfig
+      )
+    )
+    const eslint = new ESLint({
+      /**
+       * @useEslintrc
+       * We don't want ESLint to look for a configuration file explicitly
+       * and rather want it to work on the config object that we pass after
+       * merging ourselves
+       */
+      useEslintrc: false,
+      /**
+       * @fix
+       * We want to auto-fix the lint error/warning wherever possible.
+       */
+      fix: true,
+      /**
+       * @baseConfig
+       * Passing the ESLint configuration object
+       */
+      baseConfig: finalConfig,
+    })
+
+    const results = await eslint.lintFiles(`${FOLDER_NAMES.src}/**/*.{js,jsx}`)
+
+    await ESLint.outputFixes(results)
+
+    const formatter = await eslint.loadFormatter('stylish')
+    const resultText = formatter.format(results)
+
+    console.log(resultText)
+
+    return results
+
+  } catch(error) {
+    process.exitCode = 1;
+    console.error(`Error linting the files in '${FOLDER_NAMES.src}' folder`, error)
+  }
 }
 
 module.exports = eslint
