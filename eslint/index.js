@@ -84,6 +84,14 @@ const baseESLintConfig = {
         // },
         config: getFinalWebpackConfig(ENV.dev)
       }
+    },
+    /**
+     * eslint-plugin-react package wants this setting to give user
+     * explicit control to setup React's version for the linting to
+     * perform (may be they enable some check based on the version)
+     */
+    react: {
+      version: 'latest'
     }
   }
 }
