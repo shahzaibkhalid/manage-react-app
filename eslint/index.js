@@ -1,10 +1,17 @@
 const { getFinalWebpackConfig, ENV } = require('../utils')
 
 const baseESLintConfig = {
-  //TODO: document all these options
+  /**
+   * @env
+   * Configure what kind of environments this linting
+   * configuration will support, we want latest EcmaScript
+   * i.e. 2021 and browser.
+   * Setting these options enables various globals and ESLint
+   * doesn't complain and ask to set them manually.
+   */
   env: {
     browser: true,
-    es6: true
+    es2021: true
   },
   /**
    * @extends
@@ -67,21 +74,57 @@ const baseESLintConfig = {
       jsx: true,
     }
   },
-  // TODO: what is the purpose of settings?
+  /**
+   * @settings
+   * Setting object contains shared settings that are available to all
+   * the rules executed by ESLint.
+   */
   settings: {
     /**
-     * TODO: explain in detail the interplay of `eslint-import-resolver-webpack`
-     * and `eslint-plugin-import`
+     * Interplay of `eslint-import-resolver-webpack` and `eslint-plugin-import`
+     *
+     * We are using `eslint-plugin-import` to run some of the rules related to
+     * importing/exporting modules i.e. ES6 modules. But, we have absolute alias
+     * configured in webpack, so intead of doing:
+     *
+     * import Footer from '../../src/components/Footer'
+     *
+     * We do the following:
+     *
+     * import Footer from 'components/Footer'
+     *
+     * This code works flawlessly because webpack knows where to look for the Footer
+     * component once it sees an absolute path.
+     *
+     * But, here comes the problem. ESLint has no idea about and the `eslint-plugin-import`
+     * will start giving error that it can't find a module for `components/Footer`
+     *
+     * In other words, ESLint should be aware of how our absolute path like `components/Footer`
+     * will resolve to a relative path. That's why `eslint-import-resolver-webpack` package
+     * exists, it takes the whole webpack config object and finds out the path aliases through
+     * resolve object.
+     *
+     * `import/resolver` -> part of `eslint-plugin-import`
+     * `webpack` property -> takes config for `eslint-import-resolver-webpack`
      */
     'import/resolver': {
       webpack: {
-        // TODO: explain why adding DEV env here is a good approximation
-        // config: {
-        //   resolve: {
-        //     alias: getFinalWebpackConfig(ENV.dev).alias,
-        //     extensions: getFinalWebpackConfig(ENV.dev).extensions
-        //   }
-        // },
+        /**
+         * Why use `ENV.dev`?
+         *
+         * webpack config can only be merged once we pass an environment, to narrow down which
+         * environment to take, merge it with project base and then merge it further with the
+         * core webpack config exposed by `manage-react-app`.
+         *
+         * -> env specific project config (will override previous)
+         * -> base project config (will override previous)
+         * -> core manage-react-app config (standard core config that can be extended)
+         *
+         * Now, because webpack aliases, or path aliases are gonna be the same among different
+         * environments, they are envrionment agnostic and technically, whatever environment we
+         * choose here, aliases will remain the same so we are passing the `development` environment
+         * as a suitable approximation here.
+         */
         config: getFinalWebpackConfig(ENV.dev)
       }
     },
