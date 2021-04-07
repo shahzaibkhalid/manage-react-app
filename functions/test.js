@@ -1,7 +1,6 @@
 const { ENV } = require('../utils')
 
 function test(env = ENV.dev) {
-  console.log('val 😂: ', env)
   /**
    * env is optional because by-default tests should be executed
    * on the DEV env, but there may be a need to execute tests for
