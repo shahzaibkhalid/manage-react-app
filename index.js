@@ -7,6 +7,7 @@ const serve = require('./functions/serve')
 const analyze = require('./functions/analyze')
 const prettier = require('./functions/prettier')
 const eslint = require('./functions/eslint')
+const test = require('./functions/test')
 
 program
   .command('start <env>')
@@ -43,5 +44,11 @@ program
   .alias('e')
   .description('Run ESLint on the source code')
   .action(eslint);
+
+program
+  .command('test [env]')
+  .alias('b')
+  .description('Build the application')
+  .action(test);
 
 program.parse(process.argv);
