@@ -15,7 +15,8 @@ const FILE_NAMES = {
   statsJSON: 'stats.json',
   reportHTML: 'report.html',
   prettierConfig: 'prettier.config.js',
-  eslintConfig: '.eslintrc.js'
+  eslintConfig: '.eslintrc.js',
+  jestConfig: 'jest.config.js'
 }
 
 const FOLDER_NAMES = {
@@ -30,7 +31,8 @@ const FOLDER_NAMES = {
   utils: 'utils',
   report: 'report',
   maps: 'maps',
-  codeQuality: 'code-quality'
+  codeQuality: 'code-quality',
+  test: 'test'
 }
 
 const PROJECT_CONFIG_FILES = {
