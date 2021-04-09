@@ -1,15 +1,19 @@
-const { ENV } = require('../utils')
+const jest = require('jest')
+const { resolvePath, FOLDER_NAMES, FILE_NAMES } = require('../utils')
 
-function test(env = ENV.dev) {
-  /**
-   * env is optional because by-default tests should be executed
-   * on the DEV env, but there may be a need to execute tests for
-   * other envs (particularly in E2E case), for example if APIs
-   * send different data for different envs etc, in that case,
-   * an `env` argument can be passed.
-   */
-  process.env.NODE_ENV = env;
-  process.env.__MRA_PROJECT_ENV__ = env;
+function test() {
+  // get the final config object from the config file in the project
+  // pass that config object to jest
+  // let argv = process.argv.slice(2);
+  const projectJestConfig = resolvePath(
+    FOLDER_NAMES.config,
+    FOLDER_NAMES.test,
+    FILE_NAMES.jestConfig
+  )
+  jest.run([
+    ...process.argv,
+    '--config',
+    JSON.stringify(projectJestConfig)
+  ])
 }
-
 module.exports = test
