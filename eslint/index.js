@@ -11,7 +11,10 @@ const baseESLintConfig = {
    */
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    // setting jest: true makes ESLint realizes Jest globals
+    // and other settings
+    jest: true
   },
   /**
    * @extends
