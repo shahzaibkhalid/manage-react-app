@@ -84,6 +84,7 @@ module.exports = {
           [FOLDER_NAMES.components]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.components),
           [FOLDER_NAMES.hooks]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.hooks),
           [FOLDER_NAMES.utils]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.utils),
+          [FOLDER_NAMES.testUtils]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.testUtils),
         },
         /**
          * @plugins
