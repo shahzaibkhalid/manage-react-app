@@ -32,7 +32,8 @@ const FOLDER_NAMES = {
   report: 'report',
   maps: 'maps',
   codeQuality: 'code-quality',
-  test: 'test'
+  test: 'test',
+  testUtils: 'test-utils'
 }
 
 const PROJECT_CONFIG_FILES = {
@@ -112,6 +113,50 @@ function getFinalWebpackConfig(env) {
   return finalCompilerConfig;
 }
 
+function getFinalBabelConfig() {
+  return {
+    /**
+     * @plugins
+     * A plugin is a single functionality, it takes one form
+     * of JavaScript and returns another form of JavaScript.
+     * For example, converting ES-modern to ES5
+     */
+    plugins: [
+      /**
+       * We're using "react-refresh" package by React's team
+       * at Facebook to enable Hot Module Replacement.
+       * Note: react-refresh also puts an error overlay to show
+       * the errors on the screen (in the browser)
+       * TODO: if development specific config grows in size, move it away from here
+       */
+      isDevelopment() ? require.resolve('react-refresh/babel') : {}
+    ],
+    /**
+     * @presets
+     * A preset is an array of Babel plugins to glue the
+     * related functionality together.
+     * Note: Presets are executed from bottom to top
+     */
+    presets: [
+      [
+        require.resolve('@babel/preset-react'),
+        {
+          /**
+           * runtime: automatic is choosen to apply the latest JSX Transform
+           * after this, we don't have to import React in every JSX file
+           * source: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
+           * TODO: check if this config options still needs to be here after babel v8
+           */
+          'runtime': 'automatic'
+        }
+      ],
+      require.resolve('@babel/preset-env'),
+    ],
+  }
+}
+
+function getDirectoryAliases() {}
+
 module.exports = {
   ENV,
   FILE_NAMES,
@@ -122,5 +167,6 @@ module.exports = {
   getEnvBasedCoreConfig,
   isDevelopment,
   getFilesRecursivelyFromDirectory,
-  getFinalWebpackConfig
+  getFinalWebpackConfig,
+  getFinalBabelConfig
 }
