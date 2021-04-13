@@ -9,7 +9,14 @@ function getBaseJestConfig() {
      * To point-out the source-code directory that Jest
      * should be using and looking out for tests
      */
-    rootDir: resolvePath(FOLDER_NAMES.src)
+    rootDir: resolvePath(FOLDER_NAMES.src),
+    transform: {
+      //TODO: document the following
+      // why this has to be a separate file?
+      // why the path should be absolute?
+      '^.+\\.(js|jsx)$': '<rootDir>/../node_modules/manage-react-app/test/babelTransformForJest.js',
+    },
+    //TODO: add webpack alias here
   }
 }
 
