@@ -16,7 +16,7 @@ program
   .action(start);
 
 program
-  .command('build <env>')
+  .command('build [env]')
   .alias('b')
   .description('Build the application')
   .action(build);
@@ -46,7 +46,7 @@ program
   .action(eslint);
 
 program
-  .command('test [env]')
+  .command('test')
   .alias('b')
   .description('Build the application')
   .action(test);
