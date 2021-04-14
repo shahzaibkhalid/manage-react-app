@@ -64,7 +64,7 @@ function getEnvBasedCoreConfig(env) {
 }
 
 function isDevelopment() {
-  return process.env.NODE_ENV !== ENV.prod
+  return process.env.NODE_ENV === ENV.dev
 }
 
 function getFilesRecursivelyFromDirectory(directoryPath) {
@@ -155,7 +155,16 @@ function getFinalBabelConfig() {
   }
 }
 
-function getDirectoryAliases() {}
+function getDirectoryAliases() {
+  return {
+    [FOLDER_NAMES.pages]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.pages),
+    [FOLDER_NAMES.containers]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.containers),
+    [FOLDER_NAMES.components]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.components),
+    [FOLDER_NAMES.hooks]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.hooks),
+    [FOLDER_NAMES.utils]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.utils),
+    [FOLDER_NAMES.testUtils]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.testUtils),
+  }
+}
 
 module.exports = {
   ENV,
@@ -168,5 +177,6 @@ module.exports = {
   isDevelopment,
   getFilesRecursivelyFromDirectory,
   getFinalWebpackConfig,
-  getFinalBabelConfig
+  getFinalBabelConfig,
+  getDirectoryAliases
 }
