@@ -2,7 +2,7 @@ const util = require('util') // TODO: remove it
 const compiler = require('../compiler');
 const { ENV, getFinalWebpackConfig } = require('../utils');
 
-function build(env) {
+function build(env = ENV.prod) {
   process.env.NODE_ENV = ENV.prod
   process.env.__MRA_PROJECT_ENV__ = env
   try {
