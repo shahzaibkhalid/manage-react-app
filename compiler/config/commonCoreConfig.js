@@ -5,7 +5,8 @@ const miscWebpackPlugins = require('./misc/plugins')
 const {
   FOLDER_NAMES,
   FILE_NAMES,
-  resolvePath
+  resolvePath,
+  getDirectoryAliases
 } = require('../../utils');
 
 module.exports = {
@@ -78,14 +79,7 @@ module.exports = {
          * This property include some of the key project's folders
          * to avoid ugly relative folder structure.
          */
-        alias: {
-          [FOLDER_NAMES.pages]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.pages),
-          [FOLDER_NAMES.containers]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.containers),
-          [FOLDER_NAMES.components]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.components),
-          [FOLDER_NAMES.hooks]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.hooks),
-          [FOLDER_NAMES.utils]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.utils),
-          [FOLDER_NAMES.testUtils]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.testUtils),
-        },
+        alias: getDirectoryAliases(),
         /**
          * @plugins
          * An additional list of plugins specifically related to
