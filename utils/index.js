@@ -33,7 +33,7 @@ const FOLDER_NAMES = {
   maps: 'maps',
   codeQuality: 'code-quality',
   test: 'test',
-  testUtils: 'test-utils'
+  testUtils: '__test-utils__'
 }
 
 const PROJECT_CONFIG_FILES = {
