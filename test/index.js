@@ -1,8 +1,16 @@
 const deepmerge = require('deepmerge')
-const { resolvePath, FOLDER_NAMES } = require('../utils')
+const { resolvePath, FOLDER_NAMES, getDirectoryAliases } = require('../utils')
 
 function getBaseJestConfig() {
   // TODO: document all the options
+  //TODO: document what are we doing here
+
+  const webpackAliasForJest = {}
+  const aliasFoldersNameList = Object.keys(getDirectoryAliases())
+  for (let folder of aliasFoldersNameList) {
+    webpackAliasForJest[`^${folder}(.*)$`] = `<rootDir>/${folder}$1`
+  }
+
   return {
     /**
      * @rootDir
@@ -17,6 +25,9 @@ function getBaseJestConfig() {
       '^.+\\.(js|jsx)$': '<rootDir>/../node_modules/manage-react-app/test/babelTransformForJest.js',
     },
     //TODO: add webpack alias here
+    moduleNameMapper: webpackAliasForJest,
+    //TODO: explain why we are setting resolver?
+    resolver: '<rootDir>/../node_modules/manage-react-app/test/resolver.js'
   }
 }
 
