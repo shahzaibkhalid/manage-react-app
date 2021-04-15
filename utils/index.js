@@ -33,7 +33,8 @@ const FOLDER_NAMES = {
   maps: 'maps',
   codeQuality: 'code-quality',
   test: 'test',
-  testUtils: '__test-utils__'
+  testUtils: '__test-utils__',
+  static: 'static'
 }
 
 const PROJECT_CONFIG_FILES = {
@@ -163,6 +164,7 @@ function getDirectoryAliases() {
     [FOLDER_NAMES.hooks]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.hooks),
     [FOLDER_NAMES.utils]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.utils),
     [FOLDER_NAMES.testUtils]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.testUtils),
+    [FOLDER_NAMES.static]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.static),
   }
 }
 
