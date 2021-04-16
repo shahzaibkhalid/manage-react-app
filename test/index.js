@@ -25,7 +25,12 @@ function getBaseJestConfig() {
       '^.+\\.(js|jsx)$': '<rootDir>/../node_modules/manage-react-app/test/babelTransformForJest.js',
     },
     //TODO: add webpack alias here
-    moduleNameMapper: webpackAliasForJest,
+    moduleNameMapper: {
+      //TODO: document what are these values?
+      '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/../node_modules/manage-react-app/test/mocks/fileMock.js',
+      '\\.(css|less)$': '<rootDir>/../node_modules/manage-react-app/test/mocks/styleMock.js',
+      ...webpackAliasForJest,
+    },
     //TODO: explain why we are setting resolver?
     resolver: '<rootDir>/../node_modules/manage-react-app/test/resolver.js'
   }
