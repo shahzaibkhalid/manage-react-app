@@ -139,7 +139,29 @@ const baseESLintConfig = {
     react: {
       version: 'latest'
     }
-  }
+  },
+  /**
+   * @ignorePatterns
+   * Although when executing ESLint through CLI, we have
+   * control to pass what particular directly we want to
+   * lint (in our case, just the `src` directory), but for
+   * other tools, like editor's extensions, we want to filter
+   * out explicitly, all other files except `src` directory.
+   */
+  ignorePatterns: [
+    /**
+     * Ignore JavaScript files under all sub-folders under
+     * `config` directory.
+     * Why being so specific and adding separate sub-folder?
+     * Because a folder named `config` may appear in the `src`
+     * directory too
+     */
+    '**/config/envs/*.js',
+    '**/config/code-quality/*.js',
+    '**/config/test/*.js',
+    // Ignore all JavaScript files under `dist` folder
+    '**/dist/**/*.js',
+  ],
 }
 
 module.exports = baseESLintConfig
