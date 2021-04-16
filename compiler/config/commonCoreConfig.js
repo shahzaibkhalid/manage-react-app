@@ -8,6 +8,8 @@ const {
   resolvePath,
   getDirectoryAliases
 } = require('../../utils');
+const fontWebpackLoader = require('./misc/loaders/font-loader')
+const imageWebpackLoader = require('./misc/loaders/image-loader')
 
 module.exports = {
   webpack() {
@@ -48,7 +50,9 @@ module.exports = {
          * all the loaders
          */
         rules: [
-          jsWebpackLoaders()
+          jsWebpackLoaders(),
+          fontWebpackLoader(),
+          imageWebpackLoader()
         ]
       },
       /**
@@ -73,7 +77,23 @@ module.exports = {
          * extension appears, the one with the extension listed
          * first in the array will be resolved
          */
-        extensions: ['.wasm', '.js', '.jsx', '.mjs', '.json'],
+        extensions: [
+          '.wasm',
+          '.js',
+          '.jsx',
+          '.mjs',
+          '.json',
+          '.png',
+          '.svg',
+          '.jpg',
+          '.jpeg',
+          '.gif',
+          '.woff',
+          '.woff2',
+          '.eot',
+          '.ttf',
+          '.otf'
+        ],
         /**
          * @alias
          * This property include some of the key project's folders
