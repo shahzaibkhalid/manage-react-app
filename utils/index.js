@@ -34,7 +34,9 @@ const FOLDER_NAMES = {
   codeQuality: 'code-quality',
   test: 'test',
   testUtils: '__test-utils__',
-  static: 'static'
+  static: 'static',
+  api: 'api',
+  theme: 'theme'
 }
 
 const PROJECT_CONFIG_FILES = {
@@ -128,7 +130,6 @@ function getFinalBabelConfig() {
        * at Facebook to enable Hot Module Replacement.
        * Note: react-refresh also puts an error overlay to show
        * the errors on the screen (in the browser)
-       * TODO: if development specific config grows in size, move it away from here
        */
       isDevelopment() ? require.resolve('react-refresh/babel') : {}
     ],
@@ -165,6 +166,8 @@ function getDirectoryAliases() {
     [FOLDER_NAMES.utils]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.utils),
     [FOLDER_NAMES.testUtils]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.testUtils),
     [FOLDER_NAMES.static]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.static),
+    [FOLDER_NAMES.api]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.api),
+    [FOLDER_NAMES.theme]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.theme),
   }
 }
 
