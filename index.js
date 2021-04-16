@@ -10,7 +10,7 @@ const eslint = require('./functions/eslint')
 const test = require('./functions/test')
 
 program
-  .command('start <env>')
+  .command('start [env]')
   .alias('s')
   .description('Start the development server')
   .action(start);
