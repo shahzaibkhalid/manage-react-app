@@ -10,6 +10,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
+    "chmodr": "^1.2.0",
     "commander": "^6.1.0",
     "deepmerge": "^4.2.2",
     "directory-named-webpack-plugin": "^4.0.1",
