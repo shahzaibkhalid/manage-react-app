@@ -8,6 +8,7 @@ const analyze = require('./functions/analyze')
 const prettier = require('./functions/prettier')
 const eslint = require('./functions/eslint')
 const test = require('./functions/test')
+const init = require('./functions/init')
 
 program
   .command('start [env]')
@@ -50,5 +51,11 @@ program
   .alias('b')
   .description('Build the application')
   .action(test);
+
+program
+  .command('init')
+  .alias('i')
+  .description('Configure a new application')
+  .action(init);
 
 program.parse(process.argv);
