@@ -1,0 +1,6 @@
+#! /usr/bin/env node
+// console.error('Something is wronggg [pre-push]')
+
+//TODO: implement pre-push logic here.
+
+

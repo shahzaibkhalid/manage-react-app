@@ -1,1 +1,6 @@
-TODO: add pre commit logic here
+#! /usr/bin/env node
+
+// console.error('Something is wronggg [pre-commit]')
+// process.exit(1)
+
+//TODO: implement pre-commit logic here.
