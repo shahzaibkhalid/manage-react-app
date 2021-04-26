@@ -16,7 +16,9 @@ const FILE_NAMES = {
   reportHTML: 'report.html',
   prettierConfig: 'prettier.config.js',
   eslintConfig: '.eslintrc.js',
-  jestConfig: 'jest.config.js'
+  jestConfig: 'jest.config.js',
+  npmLock: 'package-lock.json',
+  yarnLock: 'yarn.lock'
 }
 
 const FOLDER_NAMES = {
