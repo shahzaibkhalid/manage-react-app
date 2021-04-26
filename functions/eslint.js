@@ -1,7 +1,7 @@
 const { ESLint } = require('eslint')
 const { resolvePath, FOLDER_NAMES, FILE_NAMES } = require('../utils')
 
-async function eslint() {
+async function eslint(options = {fix: false}) {
   try {
     const finalConfig = require(
       resolvePath(
@@ -20,9 +20,11 @@ async function eslint() {
       useEslintrc: false,
       /**
        * @fix
-       * We want to auto-fix the lint error/warning wherever possible.
+       * If --fix flag is passed, auto-fix is enabled otherwise it's off.
+       * By default it's not enabled so the same function can run in CI
+       * without producing any side-effects.
        */
-      fix: true,
+      fix: options.fix ? true: false,
       /**
        * @baseConfig
        * Passing the ESLint configuration object
