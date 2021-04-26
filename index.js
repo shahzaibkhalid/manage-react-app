@@ -42,14 +42,15 @@ program
 
 program
   .command('eslint')
+  .option('-f, --fix', 'Autofix lint errors')
   .alias('e')
   .description('Run ESLint on the source code')
   .action(eslint);
 
 program
   .command('test')
-  .alias('b')
-  .description('Build the application')
+  .alias('t')
+  .description('Test the application')
   .action(test);
 
 program
