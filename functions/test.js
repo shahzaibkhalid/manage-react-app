@@ -11,7 +11,6 @@ function test() {
     FILE_NAMES.jestConfig
   )
   jest.run([
-    ...process.argv,
     '--config',
     JSON.stringify(projectJestConfig)
   ])
