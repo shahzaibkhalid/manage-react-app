@@ -59,10 +59,16 @@ function lockFileCICheck() {
     })
 }
 
+function branchNameCICheck() {
+  //TODO: implement branch name check here.
+}
+
+
 module.exports = {
   eslintCICheck,
   testCICheck,
-  lockFileCICheck
+  lockFileCICheck,
+  branchNameCICheck
 }
 
 //TODO: implement checks here.
