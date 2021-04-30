@@ -63,6 +63,8 @@ function branchNameCICheck() {
   //TODO: implement branch name check here.
 }
 
+function commitMessageCICheck() {}
+
 
 module.exports = {
   eslintCICheck,
