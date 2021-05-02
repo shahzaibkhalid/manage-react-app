@@ -1,6 +1,7 @@
 #! /usr/bin/env node
-// console.error('Something is wronggg [pre-push]')
 
-//TODO: implement pre-push logic here.
+const { eslintCICheck, testCICheck, lockFileCICheck } = require('./shared')
 
-
+eslintCICheck()
+testCICheck()
+lockFileCICheck()

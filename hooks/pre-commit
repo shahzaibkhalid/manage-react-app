@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
-// console.error('Something is wronggg [pre-commit]')
-// process.exit(1)
+const { eslintCICheck, testCICheck, lockFileCICheck } = require('./shared')
 
-//TODO: implement pre-commit logic here.
+eslintCICheck()
+testCICheck()
+lockFileCICheck()
