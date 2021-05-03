@@ -36,5 +36,10 @@
   },
   "bin": {
     "manage-react-app": "index.js"
-  }
+  },
+  "keywords": [
+    "react",
+    "app",
+    "manage"
+  ]
 }
