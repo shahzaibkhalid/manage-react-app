@@ -1,8 +1,9 @@
 // all shared checks goes here
 const fs = require('fs')
+const branchNameLint = require('branch-name-lint')
 const eslint = require('../functions/eslint')
-const test = require('../functions/test');
-const { resolvePath, FILE_NAMES } = require('../utils');
+const test = require('../functions/test')
+const { resolvePath, FILE_NAMES } = require('../utils')
 
 function eslintCICheck() {
   function countErrors(results) {
@@ -60,7 +61,35 @@ function lockFileCICheck() {
 }
 
 function branchNameCICheck() {
-  //TODO: implement branch name check here.
+  branchNameLint({
+    //only a branch with these prefixes are allowed
+    prefixes: [
+      'feature',
+      'bugfix',
+      'hotfix',
+      'performance',
+      'prerelease',
+      'release',
+      'documentation',
+      'tests',
+      'tools'
+    ],
+    //following suggestions can be offered for common error
+    // for example: use `feature` instead of `feature`
+    suggestions: {
+      features: 'feature',
+      feat: 'feature',
+      fix: 'bugfix',
+      releases: 'release'
+    },
+    //pushing to the following branches is not allowed
+    disallowed: [
+      'main',
+      'master',
+      'develop',
+      'staging'
+    ],
+  })
 }
 
 function commitMessageCICheck() {
