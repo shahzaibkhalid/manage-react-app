@@ -1,8 +1,9 @@
 // all shared checks goes here
 const fs = require('fs')
 const BranchNameLint = require('branch-name-lint')
-const readCommitMessage = require('@commitlint/read').default
 const lintCommitMessage = require('@commitlint/lint').default
+const { rules: commitLintBaseRules } = require('@commitlint/config-conventional')
+const commitLintFormat = require('@commitlint/format').default
 const eslint = require('../functions/eslint')
 const test = require('../functions/test')
 const { resolvePath, FILE_NAMES } = require('../utils')
@@ -20,7 +21,7 @@ function eslintCICheck() {
     return { errorCount, warningCount };
   }
 
-  eslint()
+  return eslint()
     .then(results => {
       const { errorCount, warningCount } = countErrors(results)
       process.exitCode = (errorCount || warningCount) ? 1 : 0;
@@ -109,11 +110,19 @@ function branchNameCICheck() {
 
 function commitMessageCICheck() {
   const commitMessage = fs.readFileSync(process.argv[2], 'utf8').trim()
-  lintCommitMessage(
-    commitMessage,
-    //TODO: use conventional commit base config
-  )
-  // process.exit(1)
+  return lintCommitMessage(
+      commitMessage,
+      commitLintBaseRules
+    ).then(report => {
+      process.stdout.write(commitLintFormat({results: [report]}, {helpUrl: 'https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional'}))
+      if (report.errors.length > 0 || report.warnings.length > 0) {
+        process.exit(1)
+      } else {
+        process.stdout.write('All commit message checks passed! ✅')
+      }
+    }).catch(error => {
+      console.error('commitMessageCICheck failed: ', error)
+    })
 }
 
 
@@ -131,7 +140,7 @@ module.exports = {
  * 1) check tests ✅
  * 2) check ESLint ✅
  * 3) check Lockfile ✅
- * 4) check formatting of commit message
+ * 4) check formatting of commit message ✅
  * 5) run performance audit (TBD if this has to be on pre-push?)
  * 6) check branch name ✅
  * 7) format source code
