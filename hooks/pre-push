@@ -1,8 +1,0 @@
-#! /usr/bin/env node
-
-const { eslintCICheck, testCICheck, lockFileCICheck, branchNameCICheck } = require('./shared')
-
-eslintCICheck()
-testCICheck()
-lockFileCICheck()
-branchNameCICheck()

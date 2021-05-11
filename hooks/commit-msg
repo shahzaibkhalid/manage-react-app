@@ -1,0 +1,23 @@
+#! /usr/bin/env node
+const {
+  commitMessageCICheck,
+  eslintCICheck,
+  testCICheck,
+  lockFileCICheck,
+  branchNameCICheck
+} = require('./shared')
+
+function runPreCommitHooks() {
+  console.log('Running some quality checks before code can be committed! 👀\n')
+  commitMessageCICheck()
+    .then(_ => {
+      eslintCICheck()
+        .then(_ => {
+          lockFileCICheck()
+          branchNameCICheck()
+          testCICheck()
+        })
+    })
+}
+
+runPreCommitHooks()
