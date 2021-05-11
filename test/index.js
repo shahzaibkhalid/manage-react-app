@@ -71,7 +71,22 @@ function getBaseJestConfig() {
      * ended up creating `resolver.js` (check the said file for more
      * detailed comment on why we need a custom resolver)
      */
-    resolver: '<rootDir>/../node_modules/manage-react-app/test/resolver.js'
+    resolver: '<rootDir>/../node_modules/manage-react-app/test/resolver.js',
+    /**
+     * @reporters
+     *
+     * Reporters are JS classes that implements certain methods like onRunStart
+     * and onRunComplete etc. and such functions are invoked by Jest process
+     * during the time of test execution.
+     *
+     * Why are we writing a custom reporter?
+     * Plase check the `reporter.js` file for the actual intent.
+     *
+     * default: means we want to have the default reporter in place while we add out
+     * own too.
+     *
+     */
+    reporters: ['default', '<rootDir>/../node_modules/manage-react-app/test/reporter.js']
   }
 }
 
