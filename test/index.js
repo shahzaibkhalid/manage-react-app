@@ -2,8 +2,6 @@ const deepmerge = require('deepmerge')
 const { resolvePath, FOLDER_NAMES, getDirectoryAliases } = require('../utils')
 
 function getBaseJestConfig() {
-  // TODO: document all the options
-
   /**
    * @webpackAliasForJest
    * `getDirectoryAliases` gives us the object with all the directory

@@ -1,4 +1,3 @@
-const util = require('util') // TODO: remove it
 const compiler = require('../compiler');
 const { ENV, getFinalWebpackConfig } = require('../utils');
 
@@ -9,7 +8,6 @@ function build(env = ENV.prod) {
     compiler.build(
       getFinalWebpackConfig(env)
     )
-    // console.log(util.inspect(finalCompilerConfig, {showHidden: false, depth: null}))
   } catch(e) {
     console.log('error ', e)
   }
