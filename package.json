@@ -11,6 +11,7 @@
     "@commitlint/format": "^12.1.1",
     "@commitlint/lint": "^12.1.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "@types/jest": "^26.0.23",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "branch-name-lint": "^2.0.0",
