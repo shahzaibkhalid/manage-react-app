@@ -57,7 +57,30 @@ const baseESLintConfig = {
      * After React 17, with new JSX transform, React doesn't need
      * to be in scope anymore, so we can turn this rule off.
      */
-    'react/react-in-jsx-scope': 'off'
+    'react/react-in-jsx-scope': 'off',
+    //TODO: explain the following rules
+    'react/require-default-props': 'error',
+    'react/default-props-match-prop-types': 'error',
+    'react/boolean-prop-naming': [
+      'error',
+      { rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
+    ],
+    'react/destructuring-assignment': 'error',
+    'react/forbid-component-props': 'error',
+    'react/forbid-foreign-prop-types': 'error',
+    'react/forbid-prop-types': 'error',
+    'react/function-component-definition': 'error',
+    'react/no-array-index-key': 'error',
+    'react/no-danger': 'error',
+    'react/no-did-mount-set-state': 'error',
+    'react/no-did-update-set-state': 'error',
+    'react/no-redundant-should-component-update': 'error',
+    'react/no-render-return-value': 'error',
+    'react/no-this-in-sfc': 'error',
+    'react/no-unstable-nested-components': 'error',
+    'react/no-unused-prop-types': 'error',
+    'react/no-unused-state': 'error',
+    'react/no-multi-comp': 'error',
   },
   /**
    * @parserOptions
