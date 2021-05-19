@@ -160,7 +160,7 @@ const baseESLintConfig = {
      * perform (may be they enable some check based on the version)
      */
     react: {
-      version: 'latest'
+      version: 'detect'
     }
   },
   /**
