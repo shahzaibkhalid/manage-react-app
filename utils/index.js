@@ -10,7 +10,7 @@ const ENV = {
 }
 
 const FILE_NAMES = {
-  indexJS: 'index.js',
+  indexJSX: 'index.jsx',
   indexHTML: 'index.html',
   statsJSON: 'stats.json',
   reportHTML: 'report.html',

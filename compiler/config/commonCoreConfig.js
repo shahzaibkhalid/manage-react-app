@@ -22,7 +22,7 @@ module.exports = {
       entry: {
         main: resolvePath(
           FOLDER_NAMES.src,
-          FILE_NAMES.indexJS
+          FILE_NAMES.indexJSX
         )
       },
       /**
