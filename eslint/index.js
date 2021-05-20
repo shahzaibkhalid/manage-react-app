@@ -65,6 +65,7 @@ const baseESLintConfig = {
       'error',
       { rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
     ],
+    'react/button-has-type': 'error',
     'react/destructuring-assignment': 'error',
     'react/forbid-component-props': 'error',
     'react/forbid-foreign-prop-types': 'error',
@@ -81,6 +82,34 @@ const baseESLintConfig = {
     'react/no-unused-prop-types': 'error',
     'react/no-unused-state': 'error',
     'react/no-multi-comp': 'error',
+    'react/jsx-boolean-value': ['error', 'never'],
+    'react/jsx-curly-brace-presence': ['error', 'never'],
+    'react/jsx-filename-extension': ['error', { allow: 'as-needed' }],
+    'react/jsx-fragments': ['error', 'syntax'],
+    'react/jsx-max-depth': ['error', { max: 5 }],
+    'react/jsx-no-constructed-context-values': 'error',
+    'react/jsx-no-script-url': [
+      'error',
+      [
+        {
+          name: 'Link',
+          props: ['to'],
+        },
+      ],
+    ],
+    'react/jsx-no-useless-fragment': 'error',
+    'react/jsx-pascal-case': 'error',
+    'react/jsx-no-bind': 'error',
+    'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
+    'react/jsx-handler-names': [
+      'error',
+      {
+        eventHandlerPrefix: 'on',
+        eventHandlerPropPrefix: 'on',
+        checkLocalVariables: true,
+        checkInlineFunction: true,
+      },
+    ],
   },
   /**
    * @parserOptions
