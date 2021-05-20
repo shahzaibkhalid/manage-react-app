@@ -190,7 +190,20 @@ const baseESLintConfig = {
      */
     react: {
       version: 'detect'
-    }
+    },
+    /**
+     * @linkComponents
+     *
+     * Mostly we don't use anchor tag (<a></a>) directly in React
+     * apps as a way to navigate around but abstractions built on
+     * top of anchor, e.g. `Link` component in `react-router-dom`.
+     * The purpose of this setting is to let `eslint-plugin-react`
+     * know that all security and accessability checks applied on
+     * anchor (e.g. react/jsx-no-target-blank) must be applied on
+     * the `Link` component too, because we use it instead of `a`
+     * tag for navigation.
+     */
+     linkComponents: [{ name: 'Link', linkAttribute: 'to' }],
   },
   /**
    * @ignorePatterns
