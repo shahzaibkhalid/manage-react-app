@@ -110,6 +110,55 @@ const baseESLintConfig = {
         checkInlineFunction: true,
       },
     ],
+
+    /**
+     * Some core ESLint rules to improve readability adn reduced
+     * code complexity.
+     */
+
+    /**
+     * max-lines
+     *
+     * Total number of lines that can be in a file (JS,JSX).
+     * Maximum limit: 300, comments and blank lines are excluded.
+     */
+    'max-lines': 'error',
+    /**
+     * complexity
+     *
+     * A number of different paths a function can take, like `if`
+     * `else` conditions or `switch` statements count.
+     */
+    complexity: ['error', { max: 5 }],
+    /**
+     * max-depth
+     *
+     * It determines how many nested blocks (like if/else) are there.
+     * More nesting means more complexity and the default allowed nesting
+     * for this rule is 4.
+     */
+    'max-depth': 'error',
+     /**
+      * max-lines-per-function
+      *
+      * Maxomum number of lines a function can have (default is configured
+      * to be 50).
+      *`IIFE: true` means code in in-line IIFES also count as lines.
+      * Also, blank lines and comments are configured to not count as lines.
+      */
+    'max-lines-per-function': [
+      'error',
+      { IIFEs: true, skipBlankLines: true, skipComments: true },
+    ],
+    /**
+     * max-params
+     *
+     * A function can have only 5 params as more than 5 means function
+     * needs to be split into smaller one to reduce complexity and
+     * increase maintainability.
+     */
+    'max-params': ['error', { max: 5}]
+
   },
   /**
    * @parserOptions
