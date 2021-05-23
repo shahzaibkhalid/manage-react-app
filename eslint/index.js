@@ -59,13 +59,29 @@ const baseESLintConfig = {
      */
     'react/react-in-jsx-scope': 'off',
     //TODO: explain the following rules
+    /**
+     * If a prop is not required in PropTypes, a default prop must
+     * be added.
+     */
     'react/require-default-props': 'error',
+    /**
+     * Any prop in the defaultProps must have a non-required prop-type
+     */
     'react/default-props-match-prop-types': 'error',
+    /**
+     * Any prop with a `bool` prop type must start with `has` or `is`
+     */
     'react/boolean-prop-naming': [
       'error',
       { rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
     ],
+    /**
+     * Any <button></button> element must have a type attribute
+     */
     'react/button-has-type': 'error',
+    /**
+     * Any prop, state or context must be destructured to use.
+     */
     'react/destructuring-assignment': 'error',
     'react/forbid-component-props': 'error',
     'react/forbid-foreign-prop-types': 'error',
