@@ -83,8 +83,23 @@ const baseESLintConfig = {
      * Any prop, state or context must be destructured to use.
      */
     'react/destructuring-assignment': 'error',
+    /**
+     * Forbid `className`, `style` to be applied to React components
+     * Note: These props can still be applied to HTML elements.
+     */
     'react/forbid-component-props': 'error',
+    /**
+     * Any PropType (or a subset of it) must not be exported and
+     * imported into another componet to reuse.
+     * Every component must have its own proptypes.
+     * Note: If we reuse proptypes, it becomes hard to strip them
+     * in production build because webpack see them as a dependency.
+     */
     'react/forbid-foreign-prop-types': 'error',
+    /**
+     * Forbid generic PropTypes like `any`, `object`, `array` and
+     * use more specific ones like `objectOf`, `arrayOf` etc.
+     */
     'react/forbid-prop-types': 'error',
     'react/function-component-definition': 'error',
     'react/no-array-index-key': 'error',
