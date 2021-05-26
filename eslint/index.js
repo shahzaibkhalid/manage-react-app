@@ -101,6 +101,7 @@ const baseESLintConfig = {
      * use more specific ones like `objectOf`, `arrayOf` etc.
      */
     'react/forbid-prop-types': 'error',
+    //TODO: add more comments
     'react/function-component-definition': 'error',
     'react/no-array-index-key': 'error',
     'react/no-danger': 'error',
