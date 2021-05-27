@@ -130,12 +130,60 @@ function getFinalBabelConfig() {
      */
     plugins: [
       /**
+       * react-refresh/babel
+       *
        * We're using "react-refresh" package by React's team
        * at Facebook to enable Hot Module Replacement.
        * Note: react-refresh also puts an error overlay to show
        * the errors on the screen (in the browser)
        */
-      isDevelopment() ? require.resolve('react-refresh/babel') : {}
+      isDevelopment() ? require.resolve('react-refresh/babel') : {},
+      /**
+       * babel-plugin-styled-components
+       *
+       * styled-components have a dedicated babel plugin that's not
+       * required but having it can be usefule as it does minification
+       * of styles and some other things that are configured and explained
+       * below
+       */
+      [
+        require.resolve('babel-plugin-styled-components'),
+        {
+          /**
+           * @displayName
+           *
+           * By default, styled-components create gibberish names of CSS
+           * classes and it can become hard to find if a certain HTML element
+           * belong to certain styled-component, having this option enabled,
+           * CSS classes have a prefix of the component's displayName.
+           * Example:
+           * `displayName` set to `false`
+           * <button class="s12jug-0 elmQyR">Click Me</button>
+           * `displayName` set to `true`
+           * <button class="Button-s12jug-0 elmQyR">Click Me</button>
+           */
+          displayName: true,
+          /**
+           * @pure
+           *
+           * Setting `pure` to `true` enabled dead code elimination for
+           * styled-components.
+           */
+          pure: true,
+          /**
+           * @transpileTemplateLiterals
+           *
+           * We write styled-components's styles in tagged template literals
+           * and Babel can definitely transpile those to ES5 but Babel produces
+           * a totally spec-compliant ES5 equivalent which is not needed for
+           * tagged template literals for styled-components so by setting
+           * `transpileTemplateLiterals` to `true`, we are enabling styled-components
+           * to transpile only those tagged template literals which contains styles
+           * and are attached to `styled` object of styled-components
+           */
+          transpileTemplateLiterals: true
+        }
+      ]
     ],
     /**
      * @presets
