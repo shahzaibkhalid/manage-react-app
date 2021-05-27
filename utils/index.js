@@ -126,6 +126,7 @@ function getFinalBabelConfig() {
      * A plugin is a single functionality, it takes one form
      * of JavaScript and returns another form of JavaScript.
      * For example, converting ES-modern to ES5
+     * Note: Plugins are executed from first to last.
      */
     plugins: [
       /**
@@ -140,7 +141,7 @@ function getFinalBabelConfig() {
      * @presets
      * A preset is an array of Babel plugins to glue the
      * related functionality together.
-     * Note: Presets are executed from bottom to top
+     * Note: Presets are executed from bottom to top.
      */
     presets: [
       [
