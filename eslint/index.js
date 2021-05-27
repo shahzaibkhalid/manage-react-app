@@ -144,7 +144,7 @@ const baseESLintConfig = {
     ],
 
     /**
-     * Some core ESLint rules to improve readability adn reduced
+     * Some core ESLint rules to improve readability and reduced
      * code complexity.
      */
 
