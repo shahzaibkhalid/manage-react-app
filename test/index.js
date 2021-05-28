@@ -84,7 +84,14 @@ function getBaseJestConfig() {
      * own too.
      *
      */
-    reporters: ['default', '<rootDir>/../node_modules/manage-react-app/test/reporter.js']
+    reporters: ['default', '<rootDir>/../node_modules/manage-react-app/test/reporter.js'],
+    /**
+     * @setupFilesAfterEnv
+     *
+     * A list of modules we want to run to setup Jest before each test file in the
+     * suite is executed.
+     */
+    setupFilesAfterEnv: ['./jest-test-setup.js']
   }
 }
 
