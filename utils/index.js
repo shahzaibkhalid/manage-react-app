@@ -201,7 +201,14 @@ function getFinalBabelConfig() {
            * source: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
            * TODO: check if this config options still needs to be here after babel v8
            */
-          'runtime': 'automatic'
+          'runtime': 'automatic',
+          /**
+           * `theme-ui` uses a constraint-based design system approach and exposes an
+           * `sx` prop which is definitely not given by the standard JSX runtime, so
+           * we can either add pragma comment like `@jsxImportSource theme-ui` to every
+           * file or configure the default JSX runtime's source to be theme-ui.
+           */
+          'importSource': 'theme-ui'
         }
       ],
       require.resolve('@babel/preset-env'),
