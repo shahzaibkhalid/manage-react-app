@@ -7,17 +7,12 @@
  * for different Jest outputs
  */
 
-const { FOLDER_NAMES } = require("../utils")
-
 class Reporter {
   constructor(globalConfig, options) {
     this._globalConfig = globalConfig
     this._options = options
   }
 
-  onRunStart() {
-    console.log(`\nStarting Jest to run all test suites in "${FOLDER_NAMES.src}" directory.\n`)
-  }
   onRunComplete(_, options) {
     if (options && options.numFailedTestSuites > 0) {
       console.error('\nSome test suites failed! ❌')
