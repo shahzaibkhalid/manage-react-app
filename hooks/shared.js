@@ -6,21 +6,9 @@ const { rules: commitLintBaseRules } = require('@commitlint/config-conventional'
 const commitLintFormat = require('@commitlint/format').default
 const eslint = require('../functions/eslint')
 const test = require('../functions/test')
-const { resolvePath, FILE_NAMES } = require('../utils')
+const { resolvePath, FILE_NAMES, countErrors } = require('../utils')
 
 function eslintCICheck() {
-  function countErrors(results) {
-    let errorCount = 0;
-    let warningCount = 0;
-
-    for (const result of results) {
-        errorCount += result.errorCount;
-        warningCount += result.warningCount;
-    }
-
-    return { errorCount, warningCount };
-  }
-
   return eslint()
     .then(results => {
       const { errorCount, warningCount } = countErrors(results)

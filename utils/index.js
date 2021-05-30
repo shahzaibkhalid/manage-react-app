@@ -230,6 +230,20 @@ function getDirectoryAliases() {
     [FOLDER_NAMES.state]: resolvePath(FOLDER_NAMES.src, FOLDER_NAMES.state),
   }
 }
+/**
+ * Count ESLint errors and warnings.
+ */
+function countErrors(results) {
+  let errorCount = 0;
+  let warningCount = 0;
+
+  for (const result of results) {
+    errorCount += result.errorCount;
+    warningCount += result.warningCount;
+  }
+
+  return { errorCount, warningCount };
+}
 
 module.exports = {
   ENV,
@@ -243,5 +257,6 @@ module.exports = {
   getFilesRecursivelyFromDirectory,
   getFinalWebpackConfig,
   getFinalBabelConfig,
-  getDirectoryAliases
+  getDirectoryAliases,
+  countErrors
 }
