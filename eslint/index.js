@@ -51,7 +51,9 @@ const baseESLintConfig = {
    * -> Package name format: eslint-plugin-package-name
    * -> Order in which rules are applied: top to bottom
    */
-  plugins: [],
+  plugins: [
+    'testing-library'
+  ],
   rules: {
     /**
      * After React 17, with new JSX transform, React doesn't need
@@ -101,7 +103,6 @@ const baseESLintConfig = {
      * use more specific ones like `objectOf`, `arrayOf` etc.
      */
     'react/forbid-prop-types': 'error',
-    //TODO: add more comments
     'react/function-component-definition': 'error',
     'react/no-array-index-key': 'error',
     'react/no-danger': 'error',
@@ -284,7 +285,36 @@ const baseESLintConfig = {
      * the `Link` component too, because we use it instead of `a`
      * tag for navigation.
      */
-     linkComponents: [{ name: 'Link', linkAttribute: 'to' }],
+    linkComponents: [{ name: 'Link', linkAttribute: 'to' }],
+    /**
+     * @testing-library/utils-module
+     *
+     * This config conatins the name of our test setup file where we
+     * wrap a component to be tested into relevant Providers etc.
+     * In our case, the file lives in `__test-utils__` root directory
+     * and the file name is `test-utils`
+     */
+    'testing-library/utils-module': 'test-utils',
+    /**
+     * @testing-library/custom-renders
+     *
+     * By default, any custom render function with `render` in the name
+     * is recognized by React Testing Library, however, if we want to name
+     * our render function in such a way that it doesn't contain the word
+     * `render`, we can configure it here.
+     *
+     * In our case, we are exporting a custom render function from `test-utils`
+     * and naming it the same `render`, so this rule is turned off.
+     */
+    'testing-library/custom-renders': 'off',
+    /**
+     * @testing-library/custom-queries
+     *
+     * React Testing Library offers a variety of different built-in queries,
+     * however, if we want to have some of our custom queries, we can name them here
+     * and React Testing Library will recognize and won't complain about them.
+     */
+    'testing-library/custom-queries': 'off'
   },
   /**
    * @ignorePatterns
@@ -307,6 +337,21 @@ const baseESLintConfig = {
     '**/config/test/*.js',
     // Ignore all JavaScript files under `dist` folder
     '**/dist/**/*.js',
+  ],
+  /**
+   * @overrides
+   * We have a directory configured (src) when we trigger ESLint checks through
+   * the API, but we don't want to trigger test related ESLint checks on the
+   * entire source code (src directory), so we override that setting by setting
+   * the pattern (files containing `test` or `spec` in their names and being in
+   * __tests__ directory) and only for these files, we want to extend the rest
+   * of the config and apply `plugin:testing-library/react`
+   */
+  overrides: [
+    {
+      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: ['plugin:testing-library/react']
+    },
   ],
 }
 
