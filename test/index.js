@@ -91,7 +91,7 @@ function getBaseJestConfig() {
      * A list of modules we want to run to setup Jest before each test file in the
      * suite is executed.
      */
-    setupFilesAfterEnv: ['./jest-test-setup.js']
+    setupFilesAfterEnv: ['<rootDir>/../node_modules/manage-react-app/test/jest-test-setup.js']
   }
 }
 
