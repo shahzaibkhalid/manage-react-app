@@ -1,5 +1,5 @@
 const { ESLint } = require('eslint')
-const { resolvePath, FOLDER_NAMES, FILE_NAMES } = require('../utils')
+const { resolvePath, FOLDER_NAMES, FILE_NAMES, countErrors } = require('../utils')
 
 async function eslint(options = {fix: false}) {
   try {
@@ -39,9 +39,18 @@ async function eslint(options = {fix: false}) {
     const formatter = await eslint.loadFormatter('stylish')
     const resultText = formatter.format(results)
 
-    console.log(resultText)
+    console.log(resultText);
 
-    return results
+    const {errorCount, warningCount} = countErrors(results);
+
+    if (errorCount || warningCount) {
+      console.log('Some lint checks failed! ❌');
+    } else {
+      console.log('All lint checks passed! ✅');
+    }
+
+
+    return results;
 
   } catch(error) {
     process.exitCode = 1;
