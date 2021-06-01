@@ -52,7 +52,8 @@ const baseESLintConfig = {
    * -> Order in which rules are applied: top to bottom
    */
   plugins: [
-    'testing-library'
+    'testing-library',  //TODO: does it have to be here?
+    'no-relative-import-paths'
   ],
   rules: {
     /**
@@ -144,10 +145,12 @@ const baseESLintConfig = {
       },
     ],
 
+
     /**
      * Some core ESLint rules to improve readability and reduced
      * code complexity.
      */
+
 
     /**
      * max-lines
@@ -197,6 +200,15 @@ const baseESLintConfig = {
      * All object keys must be sorted alphabetically.
      */
     'sort-keys': 'error',
+
+
+    /**
+     *
+     * Some ESLint rules to have consistent import/export
+     *
+     */
+
+
     /**
      * @sort-imports
      *
@@ -205,7 +217,164 @@ const baseESLintConfig = {
      * import {a, b} from 'something'; (correct)
      */
      'sort-imports': 'error',
-
+     /**
+      * @no-relative-import-paths/no-relative-import-paths
+      *
+      * As we have a webpack alias to all the root folders, we don't want
+      * any relative import in the application as it complicates refactoring
+      * and bloats the codebase.
+      * `allowSameFolder` means there shouldn't be a relative import even for the
+      * same folder like `import Foo from './foo';`
+      */
+     'no-relative-import-paths/no-relative-import-paths': [
+      'error',
+      { allowSameFolder: false },
+    ],
+    /**
+     * @import/first
+     *
+     * Import statements must be at the top of the file.
+     * `absolute-first` means among all different type of import statements,
+     * absolute imports must be on top.
+     * Check `import/order` rule below with a more detailed breakdown on the ordering.
+     */
+    'import/first': ['error', 'absolute-first'],
+    /**
+     * @import/exports-last
+     *
+     * Instead of exporting each individual piece, have an export statement at
+     * the end of the file.
+     */
+    'import/exports-last': 'error',
+    /**
+     * @import/no-namespace
+     *
+     * We shouldn't have wildcard imports. For example:
+     * import * as React from 'react'; (incorrect)
+     * import React from 'react'; (correct)
+     */
+    'import/no-namespace': 'error',
+    /**
+     * @import/extensions
+     *
+     * We shouldn never specifiy extensions in the import path.
+     */
+    'import/extensions': ['error', 'never'],
+    /**
+     * @import/newline-after-import
+     *
+     * A newline must be added between import statements and rest of the code.
+     */
+    'import/newline-after-import': 'error',
+    /**
+     * @import/prefer-default-export
+     *
+     * For a single item to be exported from a module, it must be a default export.
+     */
+    'import/prefer-default-export': 'error',
+    /**
+     * @import/max-dependencies
+     *
+     * A module can have 10 other import statements at max.
+     */
+    'import/max-dependencies': 'error',
+    /**
+     * @import/no-unassigned-import
+     *
+     * Every import must be assigned to a variable, the only exceptions
+     * are CSS imports.
+     *
+     * import 'Foo'; (incorrect)
+     * import Foo from 'Foo'; (correct)
+     * import 'theme/base.css' (correct)
+     */
+    'import/no-unassigned-import': ['error', { allow: ['**/*.css'] }],
+    /**
+     * @import/no-named-default
+     *
+     * When we import a default export, it must not be named at the time of import.
+     * import {default as Foo} from 'Foo'; (incorrect)
+     * import Foo from 'Foo'; (correct)
+     */
+    'import/no-named-default': 'error',
+    /**
+     * @import/no-anonymous-default-export
+     *
+     * A default export must never be anonymous.
+     * export default {foo: 'bar'};  (incorrect)
+     * const theme = {foo: 'bar'}; export default theme; (correct)
+     */
+    'import/no-anonymous-default-export': 'error',
+    /**
+     * @import/group-exports
+     *
+     * Named exports must be grouped together.
+     *
+     * export { Foo };
+     * export { Bar }; (incorrect)
+     *
+     * export {Foo, Bar}; (correct)
+     */
+    'import/group-exports': 'error',
+    /**
+     * @import/dynamic-import-chunkname
+     *
+     * Every dynamic import must have a webpack magic comment
+     * to consistently name the chunkname for persistent caching.
+     */
+    'import/dynamic-import-chunkname': 'error',
+    /**
+     * @import/unambiguous
+     *
+     * Avoid the mismatch between `script` and `module`.
+     */
+    'import/unambiguous': 'error',
+    /**
+     * @import/no-commonjs
+     *
+     * There should be no commonjs modules.
+     */
+    'import/no-commonjs': 'error',
+    /**
+     * @import/no-amd
+     *
+     * There should be no AMD modules.
+     */
+    'import/no-amd': 'error',
+    /**
+     * @import/no-nodejs-modules
+     *
+     * There should be no nodejs modules.
+     */
+    'import/no-nodejs-modules': 'error',
+    /**
+     * While `import/first` implies that the import statement should be
+     * the first things in the module, `import/order` specifies the order
+     * preference for different kinds of import statements.
+     */
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',  // import path from 'path';
+          'external', // import React from 'react';
+          'internal', // import Footer from 'components/Footer';
+          'parent', // import Foo from '../../Foo'; (not allowed as it's relative)
+          'sibling', // import Bar from './Bar';
+          'index', // import Main from './';
+          'object', // import log from 'console.log'; (only available in TypeScript)
+        ],
+        /**
+         * there should be no newlines between differenet kinds of import statements.
+         */
+        'newlines-between': 'never',
+        /**
+         * among similar kind of import statements (like builtin or external, etc.),
+         * order must be ascending, and it should not be case sensitive.
+         */
+        alphabetize: { order: 'asc', caseInsensitive: true },
+      },
+    ],
   },
   /**
    * @parserOptions
