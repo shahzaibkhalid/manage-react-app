@@ -8,12 +8,16 @@ function getBaseJestConfig() {
    * aliases we have in our app, from these objects, we are constructing
    * the aliases in a way that Jest can understand when it parses absolute
    * path aliases in the source code.
+   * -> (.*) means capture whatever comes after the `folder`
+   * -> (^pattern$) means match exactly, this is important otherwise an
+   * import to `theme-ui` will try to resolve through `themes` internal
+   * folder because they partially match.
    */
 
   const webpackAliasForJest = {}
   const aliasFoldersNameList = Object.keys(getDirectoryAliases())
   for (let folder of aliasFoldersNameList) {
-    webpackAliasForJest[`^${folder}(.*)$`] = `<rootDir>/${folder}$1`
+    webpackAliasForJest[`^${folder}/(.*)$`] = `<rootDir>/${folder}/$1`
   }
 
   return {
