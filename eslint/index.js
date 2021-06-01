@@ -190,7 +190,21 @@ const baseESLintConfig = {
      * needs to be split into smaller one to reduce complexity and
      * increase maintainability.
      */
-    'max-params': ['error', { max: 5}]
+    'max-params': ['error', { max: 5}],
+    /**
+     * @sort-keys
+     *
+     * All object keys must be sorted alphabetically.
+     */
+    'sort-keys': 'error',
+    /**
+     * @sort-imports
+     *
+     * named imports must be sorted alphabetically. For example:
+     * import {b, a} from 'something'; (incorrect)
+     * import {a, b} from 'something'; (correct)
+     */
+     'sort-imports': 'error',
 
   },
   /**
