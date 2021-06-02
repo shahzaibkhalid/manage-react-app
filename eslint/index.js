@@ -57,21 +57,28 @@ const baseESLintConfig = {
   ],
   rules: {
     /**
+     * @react/react-in-jsx-scope
+     *
      * After React 17, with new JSX transform, React doesn't need
      * to be in scope anymore, so we can turn this rule off.
      */
     'react/react-in-jsx-scope': 'off',
-    //TODO: explain the following rules
     /**
+     * @react/require-default-props
+     *
      * If a prop is not required in PropTypes, a default prop must
      * be added.
      */
     'react/require-default-props': 'error',
     /**
+     * @react/default-props-match-prop-types
+     *
      * Any prop in the defaultProps must have a non-required prop-type
      */
     'react/default-props-match-prop-types': 'error',
     /**
+     * @react/boolean-prop-naming
+     *
      * Any prop with a `bool` prop type must start with `has` or `is`
      */
     'react/boolean-prop-naming': [
@@ -79,19 +86,27 @@ const baseESLintConfig = {
       { rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
     ],
     /**
+     * @react/button-has-type
+     *
      * Any <button></button> element must have a type attribute
      */
     'react/button-has-type': 'error',
     /**
+     * @react/destructuring-assignment
+     *
      * Any prop, state or context must be destructured to use.
      */
     'react/destructuring-assignment': 'error',
     /**
+     * @react/forbid-component-props
+     *
      * Forbid `className`, `style` to be applied to React components
      * Note: These props can still be applied to HTML elements.
      */
     'react/forbid-component-props': 'error',
     /**
+     * @react/forbid-foreign-prop-types
+     *
      * Any PropType (or a subset of it) must not be exported and
      * imported into another componet to reuse.
      * Every component must have its own proptypes.
@@ -100,11 +115,15 @@ const baseESLintConfig = {
      */
     'react/forbid-foreign-prop-types': 'error',
     /**
+     * @react/forbid-prop-types
+     *
      * Forbid generic PropTypes like `any`, `object`, `array` and
      * use more specific ones like `objectOf`, `arrayOf` etc.
      */
     'react/forbid-prop-types': 'error',
     /**
+     * @react/function-component-definition
+     *
      * A named component must always be a function declaration.
      * function Foo() { return <h1>Hey</h1>}
      * An unnamed component must always be defined as an arrow function.
@@ -118,56 +137,80 @@ const baseESLintConfig = {
       }
     ],
     /**
+     * @react/no-array-index-key
+     *
      * Array indexes can be changed and are considered unstable to be used
      * as a `key`.
      */
     'react/no-array-index-key': 'error',
     /**
-     * dangerouslySetInnerHTML must not be used.
+     * @react/no-danger
+     *
+     * `dangerouslySetInnerHTML` must not be used.
      */
     'react/no-danger': 'error',
     /**
+     * @react/no-did-mount-set-state
+     *
      * Updating state in componentDidMount can lead to component re-rendering
      * which results in layout thrashing.
      */
     'react/no-did-mount-set-state': 'error',
     /**
+     * @react/no-did-update-set-state
+     *
      * Updating state in componentDidUpdate can lead to component re-rendering
      * which results in layout thrashing.
      */
     'react/no-did-update-set-state': 'error',
     /**
+     * @react/no-redundant-should-component-update
+     *
      * When extending PureComponent, no need to implement shouldComponentUpdate
      */
     'react/no-redundant-should-component-update': 'error',
     /**
+     * @react/no-render-return-value
+     *
      * ReactDOM.render() return value is legacy and must not be used.
      */
     'react/no-render-return-value': 'error',
     /**
+     * @react/no-this-in-sfc
+     *
      * `this` keyword is the brainchild of classes and should not be used
      * in functional components.
      */
     'react/no-this-in-sfc': 'error',
     /**
+     * @react/no-unstable-nested-components
+     *
      * Component definitions nested inside other components leads to memory leaks
      * as a parent component re-render create brand new nested components which also
      * results in their state-loss and leads to bug.
      */
     'react/no-unstable-nested-components': 'error',
     /**
+     * @react/no-unused-prop-types
+     *
      * All propTypes must be in use.
      */
     'react/no-unused-prop-types': 'error',
     /**
+     * @react/no-unused-state
+     *
      * All state values must be in use.
      */
     'react/no-unused-state': 'error',
     /**
+     * @react/no-multi-comp
+     *
      * Only one React component per file.
      */
     'react/no-multi-comp': 'error',
     /**
+     * @react/jsx-boolean-value
+     *
      * Never provide the `true` value of a boolean prop.
      * <Foo hasBase /> (correct)
      * <Foo hasBase={false} /> (correct)
@@ -175,11 +218,15 @@ const baseESLintConfig = {
      */
     'react/jsx-boolean-value': ['error', 'never'],
     /**
+     * @react/jsx-curly-brace-presence
+     *
      * Never allow unnecessary curly braces inside JSX props
      * or/and children
      */
     'react/jsx-curly-brace-presence': ['error', 'never'],
     /**
+     * @react/jsx-filename-extension
+     *
      * Use JSX file extensions instead of JS.
      * `as-needed` means only allow JSX extension for file actually
      * containing JSX otherwise JS extension must be used.
@@ -187,20 +234,28 @@ const baseESLintConfig = {
      */
     'react/jsx-filename-extension': ['error', { allow: 'as-needed' }],
     /**
+     * @react/jsx-fragments
+     *
      * Use Fragment syntax (<></>) instead of <React.Fragment></React.Fragment>
      */
     'react/jsx-fragments': ['error', 'syntax'],
     /**
+     * @react/jsx-max-depth
+     *
      * Maximum JSX nesting level must not be more than 5.
      */
     'react/jsx-max-depth': ['error', { max: 5 }],
     /**
+     * @react/jsx-no-constructed-context-values
+     *
      * `value` passed to a Provider must be memoized so if parent Provider
      * re-renders, child Providers's `value` remains the same and this avoids
      * un-necessary re-renders.
      */
     'react/jsx-no-constructed-context-values': 'error',
     /**
+     * @react/jsx-no-script-url
+     *
      * Avoid using URLs starting with javascript: scheme as it is a potential
      * security risk. By default this rule only checks anchor tags (<a></a>)
      * Setting `name`: 'Link', and `props`: ['to] means we also want this rule
@@ -216,19 +271,27 @@ const baseESLintConfig = {
       ],
     ],
     /**
+     * @react/jsx-no-useless-fragment
+     *
      * Only use Fragment when we really need to.
      */
     'react/jsx-no-useless-fragment': 'error',
     /**
+     * @react/jsx-pascal-case
+     *
      * Pascal-case for React components must not be used.
      */
     'react/jsx-pascal-case': 'error',
     /**
+     * @react/jsx-no-bind
+     *
      * A bind or an arrow function in a JSX prop creates brand-new function
      * every re-render and it must be avoided.
      */
     'react/jsx-no-bind': 'error',
     /**
+     * @react/jsx-props-no-spreading
+     *
      * JSX props must not be spread. `custom`: `ignore` means only apply this
      * rule on HTML elements and not on custom React components.
      * <Foo {...props} /> (correct)
@@ -236,6 +299,8 @@ const baseESLintConfig = {
      */
     'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
     /**
+     * @react/jsx-handler-names
+     *
      * Event handler names must be consistent.
      * <Foo onUserMovement={this.props.onUserMovement} />
      * `eventHandlerPrefix`: this.props.onUserMovement is the event handler.
