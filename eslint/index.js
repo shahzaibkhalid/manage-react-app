@@ -215,8 +215,10 @@ const baseESLintConfig = {
      * named imports must be sorted alphabetically. For example:
      * import {b, a} from 'something'; (incorrect)
      * import {a, b} from 'something'; (correct)
+     * `ignoreDeclarationSort` means ignore the sorting of the whole import
+     * statements, so it only applies to the named imports.
      */
-     'sort-imports': 'error',
+     'sort-imports': ['error', { ignoreDeclarationSort: true }],
      /**
       * @no-relative-import-paths/no-relative-import-paths
       *
@@ -344,7 +346,7 @@ const baseESLintConfig = {
     /**
      * @import/no-nodejs-modules
      *
-     * There should be no nodejs modules.
+     * There should be no nodejs built-in modules (like `fs` and `path`, etc).
      */
     'import/no-nodejs-modules': 'error',
     /**
