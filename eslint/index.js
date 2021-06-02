@@ -104,24 +104,108 @@ const baseESLintConfig = {
      * use more specific ones like `objectOf`, `arrayOf` etc.
      */
     'react/forbid-prop-types': 'error',
-    'react/function-component-definition': 'error',
+    /**
+     * A named component must always be a function declaration.
+     * function Foo() { return <h1>Hey</h1>}
+     * An unnamed component must always be defined as an arrow function.
+     * function Foo() { return () => <h1>Hey</h1> }
+     */
+    'react/function-component-definition': [
+      'error',
+      {
+        namedComponents: 'function-declaration',
+        unnamedComponents: 'arrow-function'
+      }
+    ],
+    /**
+     * Array indexes can be changed and are considered unstable to be used
+     * as a `key`.
+     */
     'react/no-array-index-key': 'error',
+    /**
+     * dangerouslySetInnerHTML must not be used.
+     */
     'react/no-danger': 'error',
+    /**
+     * Updating state in componentDidMount can lead to component re-rendering
+     * which results in layout thrashing.
+     */
     'react/no-did-mount-set-state': 'error',
+    /**
+     * Updating state in componentDidUpdate can lead to component re-rendering
+     * which results in layout thrashing.
+     */
     'react/no-did-update-set-state': 'error',
+    /**
+     * When extending PureComponent, no need to implement shouldComponentUpdate
+     */
     'react/no-redundant-should-component-update': 'error',
+    /**
+     * ReactDOM.render() return value is legacy and must not be used.
+     */
     'react/no-render-return-value': 'error',
+    /**
+     * `this` keyword is the brainchild of classes and should not be used
+     * in functional components.
+     */
     'react/no-this-in-sfc': 'error',
+    /**
+     * Component definitions nested inside other components leads to memory leaks
+     * as a parent component re-render create brand new nested components which also
+     * results in their state-loss and leads to bug.
+     */
     'react/no-unstable-nested-components': 'error',
+    /**
+     * All propTypes must be in use.
+     */
     'react/no-unused-prop-types': 'error',
+    /**
+     * All state values must be in use.
+     */
     'react/no-unused-state': 'error',
+    /**
+     * Only one React component per file.
+     */
     'react/no-multi-comp': 'error',
+    /**
+     * Never provide the `true` value of a boolean prop.
+     * <Foo hasBase /> (correct)
+     * <Foo hasBase={false} /> (correct)
+     * <Foo hasBase={true} /> (incorrect)
+     */
     'react/jsx-boolean-value': ['error', 'never'],
+    /**
+     * Never allow unnecessary curly braces inside JSX props
+     * or/and children
+     */
     'react/jsx-curly-brace-presence': ['error', 'never'],
+    /**
+     * Use JSX file extensions instead of JS.
+     * `as-needed` means only allow JSX extension for file actually
+     * containing JSX otherwise JS extension must be used.
+     *
+     */
     'react/jsx-filename-extension': ['error', { allow: 'as-needed' }],
+    /**
+     * Use Fragment syntax (<></>) instead of <React.Fragment></React.Fragment>
+     */
     'react/jsx-fragments': ['error', 'syntax'],
+    /**
+     * Maximum JSX nesting level must not be more than 5.
+     */
     'react/jsx-max-depth': ['error', { max: 5 }],
+    /**
+     * `value` passed to a Provider must be memoized so if parent Provider
+     * re-renders, child Providers's `value` remains the same and this avoids
+     * un-necessary re-renders.
+     */
     'react/jsx-no-constructed-context-values': 'error',
+    /**
+     * Avoid using URLs starting with javascript: scheme as it is a potential
+     * security risk. By default this rule only checks anchor tags (<a></a>)
+     * Setting `name`: 'Link', and `props`: ['to] means we also want this rule
+     * to apply on React Router's Link component.
+     */
     'react/jsx-no-script-url': [
       'error',
       [
@@ -131,10 +215,34 @@ const baseESLintConfig = {
         },
       ],
     ],
+    /**
+     * Only use Fragment when we really need to.
+     */
     'react/jsx-no-useless-fragment': 'error',
+    /**
+     * Pascal-case for React components must not be used.
+     */
     'react/jsx-pascal-case': 'error',
+    /**
+     * A bind or an arrow function in a JSX prop creates brand-new function
+     * every re-render and it must be avoided.
+     */
     'react/jsx-no-bind': 'error',
+    /**
+     * JSX props must not be spread. `custom`: `ignore` means only apply this
+     * rule on HTML elements and not on custom React components.
+     * <Foo {...props} /> (correct)
+     * <h1 {...props}>Hey</h1> (incorrect)
+     */
     'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
+    /**
+     * Event handler names must be consistent.
+     * <Foo onUserMovement={this.props.onUserMovement} />
+     * `eventHandlerPrefix`: this.props.onUserMovement is the event handler.
+     * `eventHandlerPropPrefix`: onUserMovement is the prop being passed to `Foo`
+     * `checkLocalVariables`: check local variables for event handler implementation
+     * `checkInlineFunction`: check inline functions for event handler implementation
+     */
     'react/jsx-handler-names': [
       'error',
       {
