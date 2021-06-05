@@ -326,21 +326,21 @@ const baseESLintConfig = {
 
 
     /**
-     * max-lines
+     * @max-lines
      *
      * Total number of lines that can be in a file (JS,JSX).
      * Maximum limit: 300, comments and blank lines are excluded.
      */
     'max-lines': 'error',
     /**
-     * complexity
+     * @complexity
      *
      * A number of different paths a function can take, like `if`
      * `else` conditions or `switch` statements count.
      */
     complexity: ['error', { max: 5 }],
     /**
-     * max-depth
+     * @max-depth
      *
      * It determines how many nested blocks (like if/else) are there.
      * More nesting means more complexity and the default allowed nesting
@@ -348,7 +348,7 @@ const baseESLintConfig = {
      */
     'max-depth': 'error',
      /**
-      * max-lines-per-function
+      * @max-lines-per-function
       *
       * Maxomum number of lines a function can have (default is configured
       * to be 50).
@@ -360,7 +360,7 @@ const baseESLintConfig = {
       { IIFEs: true, skipBlankLines: true, skipComments: true },
     ],
     /**
-     * max-params
+     * @max-params
      *
      * A function can have only 5 params as more than 5 means function
      * needs to be split into smaller one to reduce complexity and
