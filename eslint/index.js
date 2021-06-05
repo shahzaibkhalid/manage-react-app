@@ -52,7 +52,6 @@ const baseESLintConfig = {
    * -> Order in which rules are applied: top to bottom
    */
   plugins: [
-    'testing-library',  //TODO: does it have to be here?
     'no-relative-import-paths'
   ],
   rules: {
@@ -679,6 +678,7 @@ const baseESLintConfig = {
   overrides: [
     {
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      plugins: ['testing-library'],
       extends: ['plugin:testing-library/react', 'plugin:jest-dom/recommended'],
       settings: {
         /**
