@@ -712,42 +712,66 @@ const baseESLintConfig = {
         'testing-library/custom-queries': 'off',
         /**
          * @testing-library/no-await-sync-events
+         *
+         * To ensure that sync simulated events are not awaited
+         * unnecessarily.
          */
         'testing-library/no-await-sync-events': 'error',
         /**
          * @testing-library/no-manual-cleanup
+         *
+         * React Testing Library when used along with Jest,
+         * automatically does the cleanup after each test runs.
          */
         'testing-library/no-manual-cleanup': 'error',
         /**
          * @testing-library/no-render-in-setup
+         *
+         * A stylilistc preference that calls to `render()` must not be
+         * made within the setup methods like `beforeEach`, `afterAll` etc.
          */
         'testing-library/no-render-in-setup': 'error',
         /**
          * @testing-library/no-unnecessary-act
+         *
+         * No need to use `act` when using React Testing Library as its related
+         * method/'s are already wrapped in `act`.
          */
         'testing-library/no-unnecessary-act': 'error',
         /**
          * @testing-library/no-wait-for-multiple-assertions
+         *
+         * `waitFor` has a callback that can have more than one assertions but only
+         * one is advisable to have and the reason is if one assertion fails, there is
+         * a delay between when the first one fails and second runs.
          */
         'testing-library/no-wait-for-multiple-assertions': 'error',
         /**
          * @testing-library/no-wait-for-side-effects
+         *
+         * `waitFor` keeps calling the callback function until it is resolved, and callbacks
+         * that have side-effects, running them multiple times can create false-positives.
          */
         'testing-library/no-wait-for-side-effects': 'error',
         /**
          * @testing-library/no-wait-for-snapshot
+         *
+         * As explained earlier, `waitFor` keeps calling the callback function, and having a
+         * snapshot in it means creation of one snapshot per iteration of the callback which
+         * results in false-negatives.
          */
         'testing-library/no-wait-for-snapshot': 'error',
         /**
-         * @testing-library/prefer-explicit-assert
-         */
-        'testing-library/prefer-explicit-assert': 'error',
-        /**
          * @testing-library/prefer-user-event
+         *
+         * `userEvent` is a replacing standard for `fireEvent` which is a low-level API.
          */
         'testing-library/prefer-user-event': 'error',
         /**
          * @testing-library/prefer-wait-for
+         *
+         * Use the `waitFor` method that encapsulates the functionality for other `waitFor`
+         * variants like `waitForElement` and `waitForDomChange`.
          */
         'testing-library/prefer-wait-for': 'error',
       }
