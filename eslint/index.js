@@ -709,7 +709,17 @@ const baseESLintConfig = {
          * however, if we want to have some of our custom queries, we can name them here
          * and React Testing Library will recognize and won't complain about them.
          */
-        'testing-library/custom-queries': 'off'
+        'testing-library/custom-queries': 'off',
+        'testing-library/no-await-sync-events': 'error',
+        'testing-library/no-manual-cleanup': 'error',
+        'testing-library/no-render-in-setup': 'error',
+        'testing-library/no-unnecessary-act': 'error',
+        'testing-library/no-wait-for-multiple-assertions': 'error',
+        'testing-library/no-wait-for-side-effects': 'error',
+        'testing-library/no-wait-for-snapshot': 'error',
+        'testing-library/prefer-explicit-assert': 'error',
+        'testing-library/prefer-user-event': 'error',
+        'testing-library/prefer-wait-for': 'error',
       }
     },
   ],
