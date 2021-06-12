@@ -17,6 +17,12 @@ module.exports = function() {
     template: resolvePath(
       FOLDER_NAMES.src,
       FILE_NAMES.indexHTML
+    ),
+
+    favicon: resolvePath(
+      FOLDER_NAMES.src,
+      FOLDER_NAMES.static,
+      FILE_NAMES.favicon
     )
   });
 }
