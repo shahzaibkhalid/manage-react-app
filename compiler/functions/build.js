@@ -19,14 +19,15 @@ function build(config) {
       const info = stats.toJson()
 
       // compilation errors (missing modules, syntax errors etc)
-      if (stats.hasErrors()) {
-        console.error(info.errors)
-      }
+      // if (stats.hasErrors()) {
+      //   console.error('does it come here???')
+      //   console.error(info.errors)
+      // }
 
       // compilation warnings
-      if (stats.hasWarnings()) {
-        console.warn(info.warnings)
-      }
+      // if (stats.hasWarnings()) {
+      //   console.warn(info.warnings)
+      // }
 
       /**
        * TODO: revisit this in the future if more verbose
