@@ -1,5 +1,6 @@
 const { EnvironmentPlugin, SourceMapDevToolPlugin } = require('webpack')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
   webpack() {
@@ -38,6 +39,14 @@ module.exports = {
         new SourceMapDevToolPlugin({
           publicPath: `${PROTOCOL}${HOST}:${SERVER_PORT}/`,
           filename: `${FOLDER_NAMES.maps}/[name].js.map`
+        }),
+        new CompressionPlugin({
+          /**
+           * @test
+           *
+           * Only files passing the `test` criteria will be compressed
+           */
+          test: /\.js$|\.css$/,
         }),
         new BundleAnalyzerPlugin({
           /**

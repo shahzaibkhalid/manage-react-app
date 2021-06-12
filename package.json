@@ -19,6 +19,7 @@
     "branch-name-lint": "^2.0.0",
     "chmodr": "^1.2.0",
     "commander": "^6.1.0",
+    "compression-webpack-plugin": "^8.0.0",
     "deepmerge": "^4.2.2",
     "directory-named-webpack-plugin": "^4.0.1",
     "eslint": "^7.22.0",
