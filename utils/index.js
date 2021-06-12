@@ -18,7 +18,8 @@ const FILE_NAMES = {
   eslintConfig: '.eslintrc.js',
   jestConfig: 'jest.config.js',
   npmLock: 'package-lock.json',
-  yarnLock: 'yarn.lock'
+  yarnLock: 'yarn.lock',
+  favicon: 'favicon.ico',
 }
 
 const FOLDER_NAMES = {
