@@ -36,7 +36,8 @@ module.exports = {
          * Name of the main (initial) bundle file emitted
          */
         // TODO: work on the substitutions for caching
-        filename: '[name].[contenthash].js',
+        filename: 'js/[name].[contenthash].js',
+        assetModuleFilename: 'static/[hash][ext][query]'
       },
       /**
        * @module
