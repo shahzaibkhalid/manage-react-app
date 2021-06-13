@@ -37,7 +37,12 @@ module.exports = {
          */
         // TODO: work on the substitutions for caching
         filename: 'js/[name].[contenthash].js',
-        assetModuleFilename: 'static/[hash][ext][query]'
+        assetModuleFilename: 'static/[hash][ext][query]',
+        /**
+         * @publicPath
+         * TODO: explain in detail of what and why of publicPath?
+         */
+        publicPath: '/',
       },
       /**
        * @module
