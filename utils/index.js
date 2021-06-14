@@ -209,7 +209,7 @@ function getFinalBabelConfig() {
            * we can either add pragma comment like `@jsxImportSource theme-ui` to every
            * file or configure the default JSX runtime's source to be theme-ui.
            */
-          'importSource': 'theme-ui'
+          'importSource': '@theme-ui/core'
         }
       ],
       require.resolve('@babel/preset-env'),
