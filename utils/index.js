@@ -18,6 +18,7 @@ const FILE_NAMES = {
   eslintConfig: '.eslintrc.js',
   jestConfig: 'jest.config.js',
   npmLock: 'package-lock.json',
+  packageJSON: 'package.json',
   yarnLock: 'yarn.lock',
   favicon: 'favicon.ico',
 }
@@ -96,6 +97,12 @@ function getFilesRecursivelyFromDirectory(directoryPath) {
   return fileList
 }
 
+function isPackageBeingUsed(package) {
+  const packageJSON = require(resolvePath(FILE_NAMES.packageJSON))
+  return Object.keys(packageJSON.dependencies).includes(package)
+    ? true : false;
+}
+
 function getFinalWebpackConfig(env) {
   const compiler = require('../compiler')
   const baseProjectSpecificConfig = require(
@@ -145,9 +152,11 @@ function getFinalBabelConfig() {
        * styled-components have a dedicated babel plugin that's not
        * required but having it can be usefule as it does minification
        * of styles and some other things that are configured and explained
-       * below
+       * below.
+       * Also, we are only applying this transformation if the application is using
+       * `styled-components`, otherwise skipping.
        */
-      [
+      isPackageBeingUsed('styled-components') ? [
         require.resolve('babel-plugin-styled-components'),
         {
           /**
@@ -184,7 +193,7 @@ function getFinalBabelConfig() {
            */
           transpileTemplateLiterals: true
         }
-      ]
+      ] : {},
     ],
     /**
      * @presets
@@ -259,5 +268,6 @@ module.exports = {
   getFinalWebpackConfig,
   getFinalBabelConfig,
   getDirectoryAliases,
-  countErrors
+  countErrors,
+  isPackageBeingUsed
 }
