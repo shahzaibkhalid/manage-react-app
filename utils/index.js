@@ -194,6 +194,9 @@ function getFinalBabelConfig() {
           transpileTemplateLiterals: true
         }
       ] : {},
+      isPackageBeingUsed('@emotion') ||
+      isPackageBeingUsed('@theme-ui')
+        ? require.resolve('@emotion/babel-plugin'): {},
     ],
     /**
      * @presets
