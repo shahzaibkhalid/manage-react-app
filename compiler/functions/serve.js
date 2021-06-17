@@ -12,7 +12,10 @@ const { PROTOCOL, SERVER_PORT, HOST } = PROJECT_VARS
 
 function serve() {
   const app = express()
-  //TODO: document this
+  /**
+   * all the static assets like images/fonts are bundled together in a `static` directory
+   * by webpack and therefore letting Express serve all the reuqests to `/static` path.
+  */
   app.use(
     '/static',
     express.static(
@@ -23,7 +26,10 @@ function serve() {
     )
   )
 
-  //TODO: document this
+  /**
+   * all the code sourcemaps are bundled together in a `maps` directory by webpack
+   * and therefore letting Express serve all the reuqests to `/maps` path.
+  */
   app.use(
     '/maps',
     express.static(
@@ -34,7 +40,18 @@ function serve() {
     )
   )
 
-  //TODO: document this
+  /**
+   * all the bundled code chunks are generated in a `js` directory by webpack, and
+   * the paths to those bundles are made as www.domain.com/js/main.729728704.js.
+   * Therefore, setting this custom API handler to resolve the relevant bundle (either
+   * JS or GZIP bundle).
+   *
+   * Why listen for `/js/*.js`?
+   * Why not `*.js`?
+   *
+   * To avoid collision with other JS files, that may be loaded and served from the client sides.
+   * By adding `/js/*.js` we make sure only requests for bundle JS files are routed and end up here.
+  */
   app.get('/js/*.js', (req, res) => {
     const pathToGzBundle = path.join(process.cwd(), FOLDER_NAMES.dist, req.path + '.gz')
     const pathToJSBundle = path.join(process.cwd(), FOLDER_NAMES.dist, req.path)
@@ -48,7 +65,11 @@ function serve() {
       })
   })
 
-  //TODO: document this
+  /**
+   * for every path that may occur on the app domain, e.g. (domain.com/some/crazy/path/what),
+   * we resolve the `index.html` and react-router takes over and check whether the crazy path
+   * exists or not.
+   */
   app.get('/*', (_, res) => {
     res.sendFile(
       resolvePath(
