@@ -97,6 +97,12 @@ function getFilesRecursivelyFromDirectory(directoryPath) {
   return fileList
 }
 
+/**
+ * @isPackageBeingUsed
+ *
+ * A simple utility that checks if a package is installed in the application
+ * and applies/skip certain configguration based on that.
+ */
 function isPackageBeingUsed(package) {
   const packageJSON = require(resolvePath(FILE_NAMES.packageJSON))
   return Object.keys(packageJSON.dependencies).includes(package)
