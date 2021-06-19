@@ -40,7 +40,23 @@ module.exports = {
         assetModuleFilename: 'static/[hash][ext][query]',
         /**
          * @publicPath
-         * TODO: explain in detail of what and why of publicPath?
+         * publicPath is set to `auto` by default. What does this mean?
+         * Say you go to a website bundled with webpack and on some custom route
+         * e.g www.mywebsite.com/some/custom/nested/route and you bundled the app
+         * with `publicPath: 'auto'` or didn't add this property so the default value
+         * was `auto`. Now when you go to your website, all the static resource paths
+         * will be pre-fixed with `/some/custom/nested/route` so a request to your JS bundle
+         * may look like this:
+         *
+         * www.mywebsite.com/main.729728704.js (with `publicPath: '/'`)
+         * www.mywebsite.com/some/custom/nested/route/main.729728704.js (with `publicPath: 'auto'`)
+         *
+         * We clearly don't want webpack to look out at the routes and change the handling, this may
+         * be benificial in multi-page application but not in SPAs. In server.js, we have specific
+         * handling for `/js/*.js` (for all JS bundles), `/static/*.js` (for all static resources
+         * generated during build-time) and `/*` for everything else which does include any deeply
+         * nested route, etc, we download the `index.html` file in such a case and `react-router`
+         * takes over.
          */
         publicPath: '/',
       },
