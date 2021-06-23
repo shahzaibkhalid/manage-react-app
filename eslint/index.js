@@ -346,18 +346,6 @@ const baseESLintConfig = {
      * for this rule is 4.
      */
     'max-depth': 'error',
-     /**
-      * @max-lines-per-function
-      *
-      * Maxomum number of lines a function can have (default is configured
-      * to be 50).
-      *`IIFE: true` means code in in-line IIFES also count as lines.
-      * Also, blank lines and comments are configured to not count as lines.
-      */
-    'max-lines-per-function': [
-      'error',
-      { IIFEs: true, skipBlankLines: true, skipComments: true },
-    ],
     /**
      * @max-params
      *
