@@ -1,5 +1,5 @@
 const deepmerge = require('deepmerge')
-const { resolvePath, FOLDER_NAMES, getDirectoryAliases } = require('../utils')
+const { resolvePath, FOLDER_NAMES, FILE_NAMES, getDirectoryAliases } = require('../utils')
 
 function getBaseJestConfig() {
   /**
@@ -92,10 +92,17 @@ function getBaseJestConfig() {
     /**
      * @setupFilesAfterEnv
      *
-     * A list of modules we want to run to setup Jest before each test file in the
-     * suite is executed.
+     * A list of modules we want to run some code after Jest is loaded (`AfterEnv` part).
+     * Note that this file is executed before each test file.
      */
-    setupFilesAfterEnv: ['<rootDir>/../node_modules/manage-react-app/test/jest-test-setup.js']
+    setupFilesAfterEnv: ['<rootDir>/../node_modules/manage-react-app/test/jest-test-setup.js'],
+    /**
+     * @globalSetup
+     *
+     * This file exportts an async function which is executed once before Jest is loaded
+     * Note that its purpose is to configure something before Jest is loaded for Jest to read.
+     */
+    globalSetup: `<rootDir>/${FOLDER_NAMES.testUtils}/${FILE_NAMES.globalJestSetup}`
   }
 }
 

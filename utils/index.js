@@ -21,6 +21,7 @@ const FILE_NAMES = {
   packageJSON: 'package.json',
   yarnLock: 'yarn.lock',
   favicon: 'favicon.ico',
+  globalJestSetup: 'globalJestSetup.js'
 }
 
 const FOLDER_NAMES = {
