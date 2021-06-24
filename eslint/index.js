@@ -653,6 +653,8 @@ const baseESLintConfig = {
     '**/config/test/*.js',
     // Ignore all JavaScript files under `dist` folder
     '**/dist/**/*.js',
+    // Ignore Jest setup file as it is a CommonJS module
+    '**/src/__test-utils__/globalJestSetup.js',
   ],
   /**
    * @overrides
