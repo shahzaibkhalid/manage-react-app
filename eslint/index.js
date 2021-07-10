@@ -648,6 +648,7 @@ const baseESLintConfig = {
      * Because a folder named `config` may appear in the `src`
      * directory too
      */
+    // TODO: change the following paths to read the path values from FOLDER_NAMES/FILE_NAMES
     '**/config/envs/*.js',
     '**/config/code-quality/*.js',
     '**/config/test/*.js',
