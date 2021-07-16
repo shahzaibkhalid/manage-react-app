@@ -439,7 +439,7 @@ const baseESLintConfig = {
      *
      * A module can have 10 other import statements at max.
      */
-    'import/max-dependencies': 'error',
+    'import/max-dependencies': ['error', {'max': 15}],
     /**
      * @import/no-unassigned-import
      *
