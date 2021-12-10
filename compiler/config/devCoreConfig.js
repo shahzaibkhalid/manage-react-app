@@ -16,7 +16,7 @@ module.exports = {
        * TODO: recheck after development of a few projects
        */
       devtool: 'eval-cheap-module-source-map',
-      devServer,
+      devServer: devServer(),
       plugins: [
         /**
          * TODO: check if we really need to set this?
@@ -28,7 +28,11 @@ module.exports = {
          */
         new HotModuleReplacementPlugin(),
         new ReactRefreshWebpackPlugin()
-      ]
+      ],
+      infrastructureLogging: {
+        level: 'warn',
+      },
+      stats: 'errors-warnings'
     }
   }
 }
