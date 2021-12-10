@@ -50,6 +50,7 @@ program
 program
   .command('test')
   .alias('t')
+  .option('-w, --watch', 'Watch mode for Jest')
   .description('Test the application')
   .action(test);
 

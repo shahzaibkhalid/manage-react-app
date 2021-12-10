@@ -1,7 +1,7 @@
 const jest = require('jest')
 const { resolvePath, FOLDER_NAMES, FILE_NAMES } = require('../utils')
 
-function test() {
+function test(options = {watch: false}) {
   // get the final config object from the config file in the project
   // pass that config object to jest
   // let argv = process.argv.slice(2);
@@ -10,9 +10,15 @@ function test() {
     FOLDER_NAMES.test,
     FILE_NAMES.jestConfig
   )
-  jest.run([
+
+  const jestCliOptions = [
     '--config',
     JSON.stringify(projectJestConfig)
-  ])
+  ];
+
+  if (options.watch) {
+    jestCliOptions.push('--watch');
+  }
+  jest.run(jestCliOptions);
 }
 module.exports = test
