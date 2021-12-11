@@ -1,4 +1,4 @@
-const { HotModuleReplacementPlugin, EnvironmentPlugin } = require('webpack')
+const { EnvironmentPlugin } = require('webpack')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const devServer = require('./devServer')
 
@@ -23,10 +23,9 @@ module.exports = {
          */
         new EnvironmentPlugin(['NODE_ENV']),
         /**
-         * both HotModuleReplacementPlugin, and ReactRefreshWebpackPlugin
-         * are added to support the new React Refresh implementation
+         * ReactRefreshWebpackPlugin is added to support
+         * the new React Refresh implementation
          */
-        new HotModuleReplacementPlugin(),
         new ReactRefreshWebpackPlugin()
       ],
       infrastructureLogging: {
