@@ -1,0 +1,6 @@
+{
+  "conventionalCommits.scopes": [
+    "jest",
+    "webpack"
+  ]
+}
