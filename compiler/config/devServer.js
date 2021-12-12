@@ -20,15 +20,21 @@ module.exports = () => {
     hot: true,
     /**
      * @historyApiFallback
-     *
      * Prior to SPA routing, a route change was trigerred full-blow through
      * server, `historyApiFallback` tells webpack that we are building a SPA
      * and it should utilize the History API instead of trying to hit the
      * server when we navigate and change routes.
      */
     historyApiFallback: true,
-    //TODO: document
+    /**
+     * @host
+     * Host where development server will run
+     */
     host: PROJECT_VARS.HOST,
+    /**
+     * @port
+     * Port where development server will run
+     */
     port: PROJECT_VARS.DEV_PORT
   }
 }
