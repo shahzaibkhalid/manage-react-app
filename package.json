@@ -21,6 +21,7 @@
     "chmodr": "^1.2.0",
     "commander": "^8.3.0",
     "compression-webpack-plugin": "^9.1.0",
+    "core-js": "3",
     "deepmerge": "^4.2.2",
     "directory-named-webpack-plugin": "^4.0.1",
     "eslint": "^8.4.1",
