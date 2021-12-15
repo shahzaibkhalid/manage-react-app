@@ -11,4 +11,4 @@
 const babelJest = require('babel-jest')
 const { getFinalBabelConfig } = require('../utils')
 
-module.exports = babelJest.createTransformer(getFinalBabelConfig())
+module.exports = babelJest.default.createTransformer(getFinalBabelConfig())
