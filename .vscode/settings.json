@@ -2,6 +2,7 @@
   "conventionalCommits.scopes": [
     "jest",
     "webpack",
-    "babel"
+    "babel",
+    "server"
   ]
 }
