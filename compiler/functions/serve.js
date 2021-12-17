@@ -24,7 +24,7 @@ function serve() {
         FOLDER_NAMES.static
       )
     )
-  )
+  );
 
   /**
    * all the code sourcemaps are bundled together in a `maps` directory by webpack
@@ -38,7 +38,21 @@ function serve() {
         FOLDER_NAMES.maps
       )
     )
-  )
+  );
+
+  /**
+   * favicon is generated at the root in the `dist` and so we need an explicit server
+   * route handling for favicon otherwise it won't be loaded.
+   */
+  app.use(
+    '/favicon.ico',
+    express.static(
+      resolvePath(
+        FOLDER_NAMES.dist,
+        FILE_NAMES.favicon
+      )
+    )
+  );
 
   /**
    * all the bundled code chunks are generated in a `js` directory by webpack, and
@@ -53,6 +67,7 @@ function serve() {
    * By adding `/js/*.js` we make sure only requests for bundle JS files are routed and end up here.
   */
   app.get('/js/*.js', (req, res) => {
+    console.log('does it come here??');
     const pathToGzBundle = path.join(process.cwd(), FOLDER_NAMES.dist, req.path + '.gz')
     const pathToJSBundle = path.join(process.cwd(), FOLDER_NAMES.dist, req.path)
     fs.promises.access(pathToGzBundle, fs.constants.F_OK)
