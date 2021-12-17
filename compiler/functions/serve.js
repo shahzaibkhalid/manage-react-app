@@ -67,7 +67,6 @@ function serve() {
    * By adding `/js/*.js` we make sure only requests for bundle JS files are routed and end up here.
   */
   app.get('/js/*.js', (req, res) => {
-    console.log('does it come here??');
     const pathToGzBundle = path.join(process.cwd(), FOLDER_NAMES.dist, req.path + '.gz')
     const pathToJSBundle = path.join(process.cwd(), FOLDER_NAMES.dist, req.path)
     fs.promises.access(pathToGzBundle, fs.constants.F_OK)
@@ -78,7 +77,7 @@ function serve() {
       .catch(() => {
         res.sendFile(pathToJSBundle)
       })
-  })
+  });
 
   /**
    * for every path that may occur on the app domain, e.g. (domain.com/some/crazy/path/what),
@@ -86,13 +85,15 @@ function serve() {
    * exists or not.
    */
   app.get('/*', (_, res) => {
+    res.setHeader('X-Frame-Options', 'DENY');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
     res.sendFile(
       resolvePath(
         FOLDER_NAMES.dist,
         FILE_NAMES.indexHTML
       )
     )
-  })
+  });
 
   app.listen(
     SERVER_PORT,
