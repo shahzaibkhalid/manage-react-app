@@ -3,6 +3,7 @@
     "jest",
     "webpack",
     "babel",
-    "server"
+    "server",
+    "cli"
   ]
 }
