@@ -102,7 +102,9 @@ function getBaseJestConfig() {
      * This file exportts an async function which is executed once before Jest is loaded
      * Note that its purpose is to configure something before Jest is loaded for Jest to read.
      */
-    globalSetup: `<rootDir>/${FOLDER_NAMES.testUtils}/${FILE_NAMES.globalJestSetup}`
+    globalSetup: `<rootDir>/${FOLDER_NAMES.testUtils}/${FILE_NAMES.globalJestSetup}`,
+    //TODO: document this
+    testEnvironment: 'jsdom',
   }
 }
 
