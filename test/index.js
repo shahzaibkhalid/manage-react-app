@@ -103,7 +103,11 @@ function getBaseJestConfig() {
      * Note that its purpose is to configure something before Jest is loaded for Jest to read.
      */
     globalSetup: `<rootDir>/${FOLDER_NAMES.testUtils}/${FILE_NAMES.globalJestSetup}`,
-    //TODO: document this
+    /**
+     * @testEnvironment
+     *
+     * Setting to `jsdom` means we want our tests to run in the browser environment
+     */
     testEnvironment: 'jsdom',
   }
 }
