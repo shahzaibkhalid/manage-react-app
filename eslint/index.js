@@ -419,9 +419,37 @@ const baseESLintConfig = {
     /**
      * @import/extensions
      *
-     * We shouldn never specifiy extensions in the import path.
+     * We shouldn never specifiy extensions in the import path
+     * for standard code files but in order to avoid confusion,
+     * all static files must have extensions at the end of the import path:
+     *
+     * import constants from 'static/CONSTANTS'; (incorrect)
+     * import constants from 'static/CONSTANTS.jpg'; (correct)
      */
-    'import/extensions': ['error', 'never'],
+    'import/extensions': [
+      'error',
+      'never',
+      {
+        jpg: 'always',
+        jpeg: 'always',
+        png: 'always',
+        gif: 'always',
+        eot: 'always',
+        otf: 'always',
+        webp: 'always',
+        svg: 'always',
+        ttf: 'always',
+        woff: 'always',
+        woff2: 'always',
+        mp4: 'always',
+        webm: 'always',
+        wav: 'always',
+        mp3: 'always',
+        m4a: 'always',
+        aac: 'always',
+        oga: 'always'
+      }
+    ],
     /**
      * @import/newline-after-import
      *
