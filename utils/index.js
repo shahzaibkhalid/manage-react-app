@@ -21,7 +21,9 @@ const FILE_NAMES = {
   packageJSON: 'package.json',
   yarnLock: 'yarn.lock',
   favicon: 'favicon.ico',
-  globalJestSetup: 'globalJestSetup.js'
+  globalJestSetup: 'globalJestSetup.js',
+  cypressConfig: 'cypress.config.js',
+  indexJS: 'index.js',
 }
 
 const FOLDER_NAMES = {
@@ -42,7 +44,12 @@ const FOLDER_NAMES = {
   static: 'static',
   api: 'api',
   theme: 'theme',
-  state: 'state'
+  state: 'state',
+  jest: 'jest',
+  cypress: 'cypress',
+  __tests__: '__tests__',
+  plugins: 'plugins',
+  support: 'support'
 }
 
 const PROJECT_CONFIG_FILES = {
