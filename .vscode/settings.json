@@ -4,6 +4,7 @@
     "webpack",
     "babel",
     "server",
-    "cli"
+    "cli",
+    "eslint"
   ]
 }
