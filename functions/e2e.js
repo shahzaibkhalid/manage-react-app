@@ -18,8 +18,19 @@ function e2e() {
   ));
 
   cypress.run({
-    //todo: explain various config options here
+    /**
+     * @config
+     *
+     * It is the standard Cypress configuration object
+     */
     config: projectCypressConfig,
+    /**
+     * @configFile
+     *
+     * Setting configFile to false as we don't want a `cypress.json`
+     * config file at the root rather want to use our custom config
+     * file and a config merging strategy.
+     */
     configFile: false
   })
 }
