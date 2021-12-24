@@ -1,10 +1,10 @@
 const cypress = require('cypress');
 const { FILE_NAMES, FOLDER_NAMES, resolvePath } = require('../utils')
 
-function e2e() {
+function e2e(options) {
   const {
     config,
-    test
+    test,
   } = FOLDER_NAMES;
 
   const {
@@ -17,7 +17,7 @@ function e2e() {
     cypressConfig
   ));
 
-  cypress.run({
+  cypress[options.mode]({
     /**
      * @config
      *
