@@ -109,6 +109,12 @@ function getBaseJestConfig() {
      * Setting to `jsdom` means we want our tests to run in the browser environment
      */
     testEnvironment: 'jsdom',
+    /**
+     * @testPathIgnorePatterns
+     *
+     * We want Jest to ignore `__tests__` as this folder is for end-to-end and/or
+     * integration tests and all unit tests are colocated along with source code.
+     */
     testPathIgnorePatterns: [
       `<rootDir>/${FOLDER_NAMES.__tests__}`
     ]
