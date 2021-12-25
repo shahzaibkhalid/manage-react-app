@@ -24,6 +24,8 @@ const FILE_NAMES = {
   globalJestSetup: 'globalJestSetup.js',
   cypressConfig: 'cypress.config.js',
   indexJS: 'index.js',
+  auditConfig: 'audit.config.js',
+  auditReport: 'auditReport.html'
 }
 
 const FOLDER_NAMES = {
@@ -49,7 +51,9 @@ const FOLDER_NAMES = {
   cypress: 'cypress',
   __tests__: '__tests__',
   plugins: 'plugins',
-  support: 'support'
+  support: 'support',
+  screenshots: 'screenshots',
+  videos: 'videos'
 }
 
 const PROJECT_CONFIG_FILES = {
