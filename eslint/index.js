@@ -14,7 +14,14 @@ const baseESLintConfig = {
     es2021: true,
     // setting jest: true makes ESLint realizes Jest globals
     // and other settings
-    jest: true
+    jest: true,
+    /**
+     * @cypress/globals
+     *
+     * Setting this allows certain Cypress globals to be
+     * used without any error
+     */
+    'cypress/globals': true
   },
   /**
    * @extends
@@ -42,7 +49,10 @@ const baseESLintConfig = {
     'plugin:jsx-a11y/recommended',
     // Some recommended rules to lint RegEx
     // written in `eslint-plugin-clean-regex`
-    'plugin:clean-regex/recommended'
+    'plugin:clean-regex/recommended',
+    // Some recommended rules to lint Cypress
+    // integration test code
+    'plugin:cypress/recommended'
   ],
   /**
    * @plugins
@@ -52,7 +62,8 @@ const baseESLintConfig = {
    * -> Order in which rules are applied: top to bottom
    */
   plugins: [
-    'no-relative-import-paths'
+    'no-relative-import-paths',
+    'cypress'
   ],
   rules: {
     /**
@@ -565,6 +576,24 @@ const baseESLintConfig = {
         alphabetize: { order: 'asc', caseInsensitive: true },
       },
     ],
+    //todo: document all these options
+    /**
+     * @cypress/no-assigning-return-values
+     *
+     * Do not assign return values of Cypress commands
+     * to a variable:
+     *
+     * const a = cy.get('a'); (incorrect)
+     * a.contains('text');
+     *
+     * cy.get('a').contains('text'); (correct)
+     */
+    'cypress/no-assigning-return-values': 'error',
+    'cypress/no-unnecessary-waiting': 'error',
+    'cypress/assertion-before-screenshot': 'error',
+    'cypress/no-force': 'error',
+    'cypress/no-async-tests': 'error',
+    'cypress/no-pause': 'error'
   },
   /**
    * @parserOptions
