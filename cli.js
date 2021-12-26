@@ -10,6 +10,7 @@ const eslint = require('./functions/eslint')
 const test = require('./functions/test')
 const init = require('./functions/init')
 const e2e = require('./functions/e2e')
+const audit = require('./functions/audit')
 
 program
   .command('start [env]')
@@ -60,6 +61,12 @@ program
   .alias('i')
   .description('Configure a new application')
   .action(init);
+
+program
+  .command('audit')
+  .alias('ad')
+  .description('Run Lighthouse audit')
+  .action(audit);
 
 program
   .command('e2e')
