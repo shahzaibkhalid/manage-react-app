@@ -26,6 +26,8 @@ async function generateAndOpenAuditReport() {
 
   console.log('Report is done for', runnerResult.lhr.finalUrl);
 
+  //TODO: in case of CI, kill the process here if audit does not have adequate score
+
   await chromeLauncher.launch({startingUrl: reportPath});
 
   await chrome.kill();
