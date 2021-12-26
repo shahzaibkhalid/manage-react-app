@@ -5,6 +5,9 @@
     "babel",
     "server",
     "cli",
-    "eslint"
+    "eslint",
+    "release",
+    "cypress",
+    "audit"
   ]
 }
