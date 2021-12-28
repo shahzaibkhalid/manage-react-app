@@ -1,16 +1,17 @@
 #! /usr/bin/env node
 
-const { program, Option } = require('commander')
-const start = require('./functions/start')
-const build = require('./functions/build')
-const serve = require('./functions/serve')
-const analyze = require('./functions/analyze')
-const prettier = require('./functions/prettier')
-const eslint = require('./functions/eslint')
-const test = require('./functions/test')
-const init = require('./functions/init')
-const e2e = require('./functions/e2e')
-const audit = require('./functions/audit')
+import { program, Option } from 'commander';
+
+import start from './functions/start.js';
+import build from './functions/build.js';
+import serve from './functions/serve.js';
+import analyze from './functions/analyze.js';
+import prettier from './functions/prettier.js';
+import eslint from './functions/eslint.js';
+import test from './functions/test.js';
+import init from './functions/init.js';
+import e2e from './functions/e2e.js';
+import audit from './functions/audit.js';
 
 program
   .command('start [env]')
