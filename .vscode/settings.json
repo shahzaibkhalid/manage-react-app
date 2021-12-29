@@ -8,6 +8,7 @@
     "eslint",
     "release",
     "cypress",
-    "audit"
+    "audit",
+    "prettier"
   ]
 }
