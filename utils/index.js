@@ -72,6 +72,16 @@ const PROJECT_VARS = {
   ANALYZER_SERVER_PORT: 8888
 }
 
+const CODE_FILES_EXTENSIONS = [
+  '.html',
+  '.js',
+  '.css',
+  '.md',
+  '.mdx',
+  '.json',
+  '.graphql',
+]
+
 
 function resolvePath(...options) {
   return path.resolve(process.cwd(), ...options)
@@ -96,8 +106,10 @@ function getFilesRecursivelyFromDirectory(directoryPath) {
     files = files.filter(item => !(/(^|\/)\.[^\/\.]/g).test(item));
     files.forEach(file => {
       const absolutePath = path.resolve(dirPath, file)
-      if (fs.statSync(absolutePath).isFile()) {
-        // TODO: filter to have only code related files
+      if (
+        fs.statSync(absolutePath).isFile() &&
+        CODE_FILES_EXTENSIONS.includes(path.extname(absolutePath))
+      ) {
         fileList.push(absolutePath)
       } else if (fs.statSync(absolutePath).isDirectory()) {
         _readDir(absolutePath)
@@ -288,6 +300,7 @@ module.exports = {
   FOLDER_NAMES,
   PROJECT_CONFIG_FILES,
   PROJECT_VARS,
+  CODE_FILES_EXTENSIONS,
   resolvePath,
   getEnvBasedCoreConfig,
   isDevelopment,
