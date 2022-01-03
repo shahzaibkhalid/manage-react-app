@@ -706,13 +706,14 @@ const baseESLintConfig = {
      * directory too
      */
     // TODO: change the following paths to read the path values from FOLDER_NAMES/FILE_NAMES
-    '**/config/envs/*.js',
-    '**/config/code-quality/*.js',
-    '**/config/test/*.js',
+    // '**/config/envs/*.js',
+    // '**/config/code-quality/*.js',
+    // '**/config/test/*.js',
+    '**/config/**/*.js',
     // Ignore all JavaScript files under `dist` folder
     '**/dist/**/*.js',
     // Ignore Jest setup file as it is a CommonJS module
-    '**/src/__test-utils__/globalJestSetup.js',
+    '**/src/__test-utils__/**/*.js',
   ],
   /**
    * @overrides
