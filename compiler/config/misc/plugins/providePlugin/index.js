@@ -7,7 +7,9 @@ module.exports = function() {
    * the selected environment and assigning it to a project-wide
    * global `__MRA_PROJECT_ENV__`. This could come handy in a
    * variety of different situations
-   * TODO: document why ENV.dev is being passed?
+   *
+   * Why do we pass ENV.dev config if no config is setup programmatically?
+   * Because it's a safe fallback, as DEV config works in almost all the cases.
    */
   return new ProvidePlugin({
     __MRA_PROJECT_ENV__: resolvePath(
