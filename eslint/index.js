@@ -1,4 +1,4 @@
-const { getFinalWebpackConfig, ENV } = require('../utils')
+const { getFinalWebpackConfig, ENV, FOLDER_NAMES } = require('../utils')
 
 const baseESLintConfig = {
   /**
@@ -705,15 +705,11 @@ const baseESLintConfig = {
      * Because a folder named `config` may appear in the `src`
      * directory too
      */
-    // TODO: change the following paths to read the path values from FOLDER_NAMES/FILE_NAMES
-    // '**/config/envs/*.js',
-    // '**/config/code-quality/*.js',
-    // '**/config/test/*.js',
-    '**/config/**/*.js',
+    `**/${FOLDER_NAMES.config}/**/*.js`,
     // Ignore all JavaScript files under `dist` folder
-    '**/dist/**/*.js',
+    `**/${FOLDER_NAMES.dist}/**/*.js`,
     // Ignore Jest setup file as it is a CommonJS module
-    '**/src/__test-utils__/**/*.js',
+    `**/${FOLDER_NAMES.src}/${FOLDER_NAMES.testUtils}/**/*.js`,
   ],
   /**
    * @overrides
