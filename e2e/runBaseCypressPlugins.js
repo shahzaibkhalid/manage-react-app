@@ -6,7 +6,11 @@ function runBaseCypressPlugins(on, _) {
   //todo: why we do it?
   process.env.NODE_ENV = 'development';
   const options = {
-    //todo: explain why ENV.dev is a good approximation for this purpose
+    /**
+     * Why do we pass DEV webpack config to Cypress?
+     * Because it's a good approximation for our tests to run
+     * just like regular code which is also served through DEV env
+     */
     webpackOptions: getFinalWebpackConfig(ENV.dev),
     watchOptions: {},
   }
